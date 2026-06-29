@@ -6,21 +6,21 @@
     <title>VGCK | Premium Software Studio</title>
     <style>
         :root {
-            --bg-dark: #050609;
-            --surface-glass: rgba(13, 15, 24, 0.65);
+            --bg-dark: #030407;
+            --surface-glass: rgba(11, 13, 23, 0.7);
             --border: rgba(255, 255, 255, 0.04);
-            --border-hover: rgba(0, 255, 163, 0.25);
+            --border-hover: #00ffa3;
             
             --accent: #00ffa3;
-            --accent-glow: rgba(0, 255, 163, 0.15);
-            --blue: #3b82f6;
-            --blue-glow: rgba(59, 130, 246, 0.25);
+            --accent-glow: rgba(0, 255, 163, 0.3);
+            --blue: #00b8ff;
+            --blue-glow: rgba(0, 184, 255, 0.35);
             
-            --text-main: #f8fafc;
-            --text-secondary: #94a3b8;
-            --text-dim: #475569;
+            --text-main: #ffffff;
+            --text-secondary: #a1b0cb;
+            --text-dim: #526484;
             --danger: #ff4757;
-            --success-bg: rgba(0, 255, 163, 0.06);
+            --success-bg: rgba(0, 255, 163, 0.08);
         }
 
         * {
@@ -40,33 +40,33 @@
             position: relative;
         }
 
-        /* Floating Neon Ambient Orbs Background */
+        /* Intense Floating Neon Ambient Orbs Background */
         .ambient-glow-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
             pointer-events: none;
             overflow: hidden;
-            background: #040508;
+            background: #020305;
         }
 
         .light-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.12;
+            filter: blur(100px);
+            opacity: 0.22;
             mix-blend-mode: screen;
-            animation: floatAround 25s infinite alternate ease-in-out;
+            animation: floatAround 18s infinite alternate ease-in-out;
         }
 
-        .orb-1 { width: 400px; height: 400px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); top: -10%; left: 10%; animation-duration: 20s; }
-        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6 0%, transparent 70%); bottom: -10%; right: 5%; animation-duration: 28s; animation-delay: -5s; }
-        .orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); top: 40%; left: 60%; animation-duration: 22s; animation-delay: -12s; }
+        .orb-1 { width: 450px; height: 450px; background: radial-gradient(circle, var(--accent) 0%, transparent 75%); top: -5%; left: 15%; animation-duration: 15s; }
+        .orb-2 { width: 550px; height: 550px; background: radial-gradient(circle, #0077ff 0%, transparent 75%); bottom: -5%; right: 8%; animation-duration: 22s; animation-delay: -3s; }
+        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #7928ca 0%, transparent 75%); top: 35%; left: 55%; animation-duration: 18s; animation-delay: -8s; }
 
         @keyframes floatAround {
             0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(60px, 40px) scale(1.1); }
-            100% { transform: translate(-40px, 80px) scale(0.9); }
+            50% { transform: translate(80px, 50px) scale(1.15); }
+            100% { transform: translate(-50px, 90px) scale(0.9); }
         }
 
         .container {
@@ -77,49 +77,51 @@
 
         .hidden { display: none !important; }
 
-        /* Navigation Bar */
+        /* Sleek Top Bar Menu Layout */
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(10, 11, 18, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(10, 12, 22, 0.5);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--border);
-            padding: 16px 32px;
-            border-radius: 14px;
+            padding: 18px 36px;
+            border-radius: 16px;
             margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .nav-logo {
-            font-weight: 800;
-            font-size: 1.25rem;
+            font-weight: 900;
+            font-size: 1.4rem;
             letter-spacing: -0.5px;
-            background: linear-gradient(180deg, #ffffff, #888);
+            background: linear-gradient(135deg, #ffffff 0%, var(--blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links li { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
-        .nav-links li.active { color: #ffffff; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links li { color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-links li.active { color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 163, 0.3); }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #ffffff;
-            padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); color: #ffffff;
+            padding: 10px 20px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; text-decoration: none;
+            transition: all 0.3s;
         }
-        .nav-btn:hover { background: #ffffff; color: var(--bg-dark); }
+        .nav-btn:hover { background: #ffffff; color: var(--bg-dark); box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 
-        /* Status Title */
-        .status-header { margin-bottom: 32px; }
-        .status-header span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); font-weight: 700; }
-        .status-header h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; margin-top: 4px; }
+        /* Status Banner Header */
+        .status-header { margin-bottom: 40px; }
+        .status-header span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); font-weight: 800; }
+        .status-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-top: 4px; background: linear-gradient(180deg, #fff 40%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* Store Grid Layout */
+        /* Premium Aggressive Store Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
+            gap: 24px;
             margin-bottom: 60px;
         }
 
@@ -128,108 +130,116 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 28px;
+            border-radius: 16px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
 
         .card:hover {
             border-color: var(--border-hover);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
-            transform: translateY(-2px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px var(--accent-glow);
+            transform: translateY(-4px);
         }
 
-        .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
-        .card-meta .cat { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700; letter-spacing: 0.5px; }
-        .card-meta h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 2px; color: #ffffff; }
+        .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
+        .card-meta .cat { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); font-weight: 800; letter-spacing: 1px; }
+        .card-meta h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 2px; color: #ffffff; }
 
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; background: var(--success-bg);
-            border: 1px solid rgba(0, 255, 163, 0.15); color: var(--accent); font-size: 0.65rem;
-            font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+            border: 1px solid rgba(0, 255, 163, 0.2); color: var(--accent); font-size: 0.65rem;
+            font-weight: 800; text-transform: uppercase; padding: 5px 12px; border-radius: 20px;
+            letter-spacing: 0.5px; box-shadow: 0 0 10px rgba(0, 255, 163, 0.1);
         }
-        .status-badge::before { content: ''; width: 5px; height: 5px; background-color: var(--accent); border-radius: 50%; box-shadow: 0 0 6px var(--accent); }
+        .status-badge::before { content: ''; width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
 
-        .price-section { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.02); padding-top: 20px; }
-        .price-col .lbl { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; display: block; }
-        .price-col .val { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
+        .price-section { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.03); padding-top: 24px; }
+        .price-col .lbl { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; display: block; font-weight: 700; }
+        .price-col .val { font-size: 1.75rem; font-weight: 800; color: #ffffff; letter-spacing: -0.5px; }
 
-        /* Action Buttons */
+        /* High-Gloss Action Controls Buttons */
         .action-btn, .submit-btn, .back-ui-btn, .final-btn {
-            display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.85rem;
-            cursor: pointer; border: none; transition: all 0.2s ease; outline: none; border-radius: 8px; text-decoration: none;
+            display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;
+            cursor: pointer; border: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); outline: none; border-radius: 10px; text-decoration: none;
         }
 
-        .action-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #ffffff; padding: 10px 20px; }
-        .card:hover .action-btn { background: #ffffff; color: var(--bg-dark); box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); }
-        .action-btn:active, .submit-btn:active, .back-ui-btn:active, .final-btn:active { transform: scale(0.97); }
+        .action-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #ffffff; padding: 12px 24px; width: 130px; }
+        .card:hover .action-btn { background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%); color: var(--bg-dark); box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); }
+        
+        .action-btn:active, .submit-btn:active, .back-ui-btn:active, .final-btn:active { transform: scale(0.96); }
 
-        /* Option Selection Pane View */
+        /* Configuration Plan Selector Pane UI */
         .selection-pane {
-            max-width: 500px; margin: 60px auto; background: rgba(13, 15, 24, 0.75);
-            border: 1px solid var(--border); border-radius: 16px; padding: 36px;
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            max-width: 520px; margin: 60px auto; background: rgba(14, 17, 28, 0.8);
+            border: 1px solid var(--border); border-radius: 20px; padding: 40px;
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 40px rgba(0, 184, 255, 0.05);
         }
 
-        .back-ui-btn { background: none; color: var(--text-dim); margin-bottom: 20px; }
+        .back-ui-btn { background: none; color: var(--text-dim); margin-bottom: 24px; font-size: 0.95rem; }
         .back-ui-btn:hover { color: #ffffff; }
-        .selection-pane h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 4px; }
-        .selection-price-display { font-size: 2.2rem; font-weight: 800; color: #ffffff; margin-bottom: 28px; }
+        .selection-pane h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+        .selection-price-display { font-size: 2.6rem; font-weight: 900; color: #ffffff; margin-bottom: 32px; letter-spacing: -1px; }
 
         .plan-row {
-            background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); border-radius: 10px;
-            padding: 18px; margin-bottom: 12px; display: flex; justify-content: space-between;
-            align-items: center; cursor: pointer; transition: all 0.2s;
+            background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; margin-bottom: 14px; display: flex; justify-content: space-between;
+            align-items: center; cursor: pointer; transition: all 0.2s ease;
         }
-        .plan-row:hover { border-color: rgba(255, 255, 255, 0.1); }
-        .plan-row.selected { border-color: var(--blue); background: rgba(59, 130, 246, 0.03); }
-        .plan-row strong { font-weight: 600; font-size: 0.95rem; }
-        .plan-row .p-val { font-weight: 700; color: var(--blue); }
+        .plan-row:hover { border-color: rgba(255, 255, 255, 0.08); background: rgba(255,255,255,0.01); }
+        .plan-row.selected { border-color: var(--blue); background: rgba(0, 184, 255, 0.04); box-shadow: 0 0 20px rgba(0, 184, 255, 0.1); }
+        .plan-row strong { font-weight: 600; font-size: 1rem; }
+        .plan-row .p-val { font-weight: 800; color: var(--blue); font-size: 1.05rem; }
 
-        .pane-actions { margin-top: 32px; display: flex; gap: 12px; }
-        .submit-btn { width: 100%; padding: 14px; font-size: 0.95rem; }
-        .submit-btn.primary { background: var(--blue); color: white; }
-        .submit-btn.primary:hover { box-shadow: 0 5px 20px var(--blue-glow); filter: brightness(1.1); }
+        .pane-actions { margin-top: 36px; display: flex; gap: 14px; }
+        .submit-btn { width: 100%; padding: 16px; font-size: 1rem; border-radius: 12px; }
+        .submit-btn.primary { background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%); color: white; box-shadow: 0 5px 15px rgba(0, 184, 255, 0.2); }
+        .submit-btn.primary:hover { box-shadow: 0 8px 25px var(--blue-glow); filter: brightness(1.1); transform: translateY(-1px); }
         .submit-btn.secondary { background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--text-secondary); }
+        .submit-btn.secondary:hover { background: rgba(255,255,255,0.05); color: #fff; }
 
-        /* Security Verification Lock Overlay Modal */
+        /* Timed Modular Warning Popups */
         .modal-view {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(3, 4, 7, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(2, 3, 5, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 24px;
         }
 
-        .warning-popup { background: #0d0a0b; border: 1px solid rgba(255, 71, 87, 0.2); border-radius: 16px; max-width: 440px; width: 100%; padding: 40px; text-align: center; }
-        .warning-icon { font-size: 2.2rem; color: var(--danger); margin-bottom: 16px; background: rgba(255, 71, 87, 0.08); width: 60px; height: 60px; line-height: 60px; border-radius: 50%; display: inline-block; }
-        .warning-popup h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 10px; }
-        .warning-popup p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 24px; }
-        .countdown-box { font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; background: rgba(255,255,255,0.01); padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border); display: inline-block; }
+        .warning-popup { background: #0f0b0c; border: 1px solid rgba(255, 71, 87, 0.25); border-radius: 24px; max-width: 460px; width: 100%; padding: 48px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,0.7), 0 0 40px rgba(255, 71, 87, 0.1); }
+        .warning-icon { font-size: 2.2rem; color: var(--danger); margin-bottom: 20px; background: rgba(255, 71, 87, 0.08); width: 64px; height: 64px; line-height: 64px; border-radius: 50%; display: inline-block; box-shadow: 0 0 15px rgba(255, 71, 87, 0.15); }
+        .warning-popup h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .warning-popup p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px; }
+        .countdown-box { font-size: 0.85rem; color: var(--text-dim); font-weight: 700; text-transform: uppercase; background: rgba(255,255,255,0.02); padding: 10px 22px; border-radius: 10px; border: 1px solid var(--border); display: inline-block; letter-spacing: 0.5px; }
 
-        /* Invoice Screen */
+        /* Crypto Checkout Invoice Pane UI */
         .invoice-pane {
-            max-width: 460px; margin: 60px auto; background: rgba(13, 15, 24, 0.75);
-            border: 1px solid var(--border); border-radius: 16px; padding: 40px;
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); text-align: center;
+            max-width: 480px; margin: 60px auto; background: rgba(14, 17, 28, 0.8);
+            border: 1px solid var(--border); border-radius: 20px; padding: 44px;
+            backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); text-align: center;
+            box-shadow: 0 35px 70px rgba(0,0,0,0.6);
         }
 
-        .amount-container { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 24px 0; }
-        .amount-container .lbl { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); display: block; margin-bottom: 2px; }
-        .amount-container .amt { font-size: 2.2rem; font-weight: 700; color: #ffffff; }
+        .amount-container { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin: 28px 0; }
+        .amount-container .lbl { font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); display: block; margin-bottom: 4px; font-weight: 700; letter-spacing: 0.5px; }
+        .amount-container .amt { font-size: 2.5rem; font-weight: 900; color: #ffffff; letter-spacing: -1px; }
 
-        .address-row { text-align: left; margin-bottom: 20px; }
-        .address-row label { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        .address-input { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); padding: 14px; border-radius: 8px; font-family: monospace; font-size: 0.8rem; color: #ffffff; word-break: break-all; user-select: all; }
+        .address-row { text-align: left; margin-bottom: 24px; }
+        .address-row label { font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .address-input { background: rgba(0, 0, 0, 0.35); border: 1px solid var(--border); padding: 16px; border-radius: 10px; font-family: monospace; font-size: 0.85rem; color: #ffffff; word-break: break-all; user-select: all; }
 
-        .final-btn { background: #ffffff; color: var(--bg-dark); padding: 14px; width: 100%; border-radius: 10px; font-size: 0.95rem; margin-top: 24px; font-weight: bold; }
-        .final-btn:hover:not(:disabled) { background: var(--accent); box-shadow: 0 5px 15px rgba(0, 255, 163, 0.2); }
-        .final-btn:disabled { background: rgba(255,255,255,0.02); color: var(--text-dim); border: 1px solid var(--border); cursor: not-allowed; }
+        .final-btn { background: #ffffff; color: var(--bg-dark); padding: 16px; width: 100%; border-radius: 12px; font-size: 1rem; margin-top: 32px; font-weight: 700; box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
+        .final-btn:hover:not(:disabled) { background: var(--accent); box-shadow: 0 8px 25px rgba(0, 255, 163, 0.3); transform: translateY(-1px); }
+        .final-btn:disabled { background: rgba(255,255,255,0.02); color: var(--text-dim); border: 1px solid var(--border); cursor: not-allowed; opacity: 0.5; }
 
-        .contact-section { border-top: 1px solid rgba(255,255,255,0.02); padding: 40px 0; margin-top: 80px; text-align: center; }
+        /* Footer links */
+        .contact-section { border-top: 1px solid rgba(255,255,255,0.02); padding: 48px 0; margin-top: 100px; text-align: center; }
         .contact-section p { color: var(--text-secondary); font-size: 0.95rem; }
-        .discord-btn { display: inline-flex; background-color: #5865F2; color: #ffffff; font-weight: bold; padding: 14px 32px; border-radius: 10px; text-decoration: none; margin-top: 15px; }
+        .discord-btn { display: inline-flex; background-color: #5865F2; color: #ffffff; font-weight: 700; padding: 14px 36px; border-radius: 12px; text-decoration: none; margin-top: 18px; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.2); transition: all 0.2s; }
+        .discord-btn:hover { box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4); transform: translateY(-1px); }
 
         footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 20px; }
     </style>
@@ -412,6 +422,9 @@
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
         const COOLDOWN_LIMIT = 60000; 
 
+        // FIXED USER ID CONFIGURATION MAPPING MENTION
+        const YOUR_DISCORD_USER_ID = "123456789012345678"; // <--- PASTE YOUR REAL NUMERICAL USER ID HERE TO GET PINGED!
+
         let currentSelectedProduct = "";
         let currentSelectedVariant = "";
         let currentSelectedPrice = "";
@@ -439,12 +452,10 @@
             const rem = getSpamLockoutRemaining();
             if (rem > 0) {
                 el.disabled = true;
-                el.style.opacity = "0.5";
                 el.innerText = `Lockout Active (${rem}s)`;
                 return true;
             }
             el.disabled = false;
-            el.style.opacity = "1";
             el.innerText = "I Have Paid, Confirm Checkout";
             return false;
         }
@@ -522,18 +533,21 @@
             if (verifyButtonState()) return;
 
             const target = document.getElementById('confirm-pay-btn');
-            target.innerText = "Transmitting verification ticket...";
+            target.innerText = "Transmitting registration verification ticket...";
             target.disabled = true;
 
+            // CORRECT DISCORD ID MENTION STRING PARSING FORMAT
+            const mentionSyntax = (YOUR_DISCORD_USER_ID && YOUR_DISCORD_USER_ID !== "123456789012345678") ? `<@${YOUR_DISCORD_USER_ID}>` : "@here";
+
             const dataPacket = {
-                content: `🚨 **NEW TRANSACTION INVOICE CONFIRMATION SUBMITTED**`,
+                content: `${mentionSyntax} 🚨 **URGENT INVOICE SETTLEMENT DEPLOYMENT ACTION DETECTED**`,
                 embeds: [{
-                    title: "System Checkout Interaction Token Logged",
-                    color: 65443, 
+                    title: "System Checkout Interaction Ticket Issued",
+                    color: 16753920, 
                     fields: [
-                        { name: "Software Package Name", value: currentSelectedProduct, inline: true },
-                        { name: "Plan Option Selection", value: currentSelectedVariant, inline: true },
-                        { name: "Cost Valuation Scale", value: currentSelectedPrice, inline: true }
+                        { name: "Utility Asset Model", value: currentSelectedProduct, inline: true },
+                        { name: "Plan Interval Tier", value: currentSelectedVariant, inline: true },
+                        { name: "Price Metric Scale", value: currentSelectedPrice, inline: true }
                     ],
                     timestamp: new Date().toISOString()
                 }]
@@ -547,7 +561,7 @@
                 body: JSON.stringify(dataPacket)
             })
             .then(() => {
-                alert("✅ Checkout request sent. Please provide your transaction details directly to berrymucho on Discord.");
+                alert("✅ Checkout intent captured. Drop your raw blockchain ledger hash link to berrymucho on Discord to instantly clear initialization flags.");
                 returnToStore();
             })
             .catch(err => {
