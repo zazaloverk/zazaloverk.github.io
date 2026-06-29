@@ -13,6 +13,7 @@
             --text-muted: #8a8f98;
             --checkout-blue: #2563eb;
             --card-border: #232634;
+            --warning-red: #ff3838;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -123,6 +124,48 @@
         }
         .action-cart-btn { flex: 1; background-color: #232634; color: white; padding: 14px; border-radius: 8px; border: 1px solid #3a3f50; cursor: pointer; }
 
+        /* 5-Second Warning Sign View Layout */
+        .warning-view {
+            max-width: 550px;
+            margin: 60px auto;
+            background-color: #1a1114;
+            border: 2px solid var(--warning-red);
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 56, 56, 0.2);
+            animation: flash-border 1s infinite alternate;
+        }
+
+        @keyframes flash-border {
+            0% { border-color: #232634; box-shadow: none; }
+            100% { border-color: var(--warning-red); box-shadow: 0 0 20px rgba(255, 56, 56, 0.3); }
+        }
+
+        .warning-icon {
+            font-size: 4rem;
+            color: var(--warning-red);
+            margin-bottom: 15px;
+            animation: pulse-icon 0.6s infinite alternate;
+        }
+
+        @keyframes pulse-icon {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        .countdown-timer {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-top: 25px;
+            font-weight: bold;
+        }
+
+        .countdown-number {
+            color: var(--warning-red);
+            font-size: 1.5rem;
+        }
+
         /* Payment Form Display Page */
         .payment-view {
             max-width: 500px;
@@ -146,6 +189,7 @@
 
     <div class="container">
         
+        <!-- PAGE 1: MAIN STOREFRONT VIEW -->
         <div id="store-view">
             <header>
                 <h1>VGCK</h1>
@@ -230,6 +274,7 @@
             </main>
         </div>
 
+        <!-- PAGE 2: PICK AN OPTION SELECTION SITE VIEW -->
         <div id="selection-view" class="selection-view hidden">
             <button class="back-btn" onclick="returnToStore()">← Back to Store</button>
             <h2 id="product-title">Product Name</h2>
@@ -239,11 +284,24 @@
             <div id="options-list-container"></div>
             
             <div class="checkout-actions">
-                <button class="action-submit-btn" onclick="goToPaymentPage()">⚡ Checkout</button>
+                <button class="action-submit-btn" onclick="triggerWarningCountdown()">⚡ Checkout</button>
                 <button class="action-cart-btn" onclick="returnToStore()">🛒 Add To Cart</button>
             </div>
         </div>
 
+        <!-- INTERMEDIATE PAGE 2.5: FLASHING WARNING DISPLAY (5-SECOND DELAY) -->
+        <div id="warning-view" class="warning-view hidden">
+            <div class="warning-icon">⚠️</div>
+            <h2 style="color: var(--warning-red); margin-bottom: 10px; font-size: 1.8rem;">ATTENTION REQUIRED</h2>
+            <p style="font-size: 1.1rem; font-weight: bold; margin-bottom: 15px;">Wallet addresses change frequently.</p>
+            <p style="color: var(--text-muted); line-height: 1.5;">You must contact handle <span style="color:#ffffff; font-weight:bold;">berrymucho</span> on Discord right before submitting any funds to guarantee accurate key activation delivery channels.</p>
+            
+            <div class="countdown-timer">
+                Securing channel configuration in <span class="countdown-number" id="seconds-left">5</span>s...
+            </div>
+        </div>
+
+        <!-- PAGE 3: FINAL CRYPTO CHECKOUT BILLING VIEW -->
         <div id="payment-view" class="payment-view hidden">
             <h3 style="color: var(--accent-color); font-size:1.6rem;">Complete Payment</h3>
             <p style="color:var(--text-muted); margin-top:5px;">Send the transaction value matching your selected option below:</p>
@@ -285,14 +343,15 @@
         function showSelectionPage(productId) {
             const data = productsData[productId];
             if(!data) return;
-            currentSelectedPrice = data.variants.price;
+            currentSelectedPrice = data.variants[0].price;
 
             document.getElementById('store-view').classList.add('hidden');
             document.getElementById('payment-view').classList.add('hidden');
+            document.getElementById('warning-view').classList.add('hidden');
             document.getElementById('selection-view').classList.remove('hidden');
 
             document.getElementById('product-title').innerText = data.title;
-            document.getElementById('main-price-display').innerText = data.variants.price;
+            document.getElementById('main-price-display').innerText = data.variants[0].price;
 
             const container = document.getElementById('options-list-container');
             container.innerHTML = '';
@@ -315,12 +374,33 @@
         function returnToStore() {
             document.getElementById('selection-view').classList.add('hidden');
             document.getElementById('payment-view').classList.add('hidden');
+            document.getElementById('warning-view').classList.add('hidden');
             document.getElementById('store-view').classList.remove('hidden');
             window.scrollTo(0,0);
         }
 
-        function goToPaymentPage() {
+        function triggerWarningCountdown() {
             document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('warning-view').classList.remove('hidden');
+            window.scrollTo(0,0);
+
+            let timeLeft = 5;
+            const timerElement = document.getElementById('seconds-left');
+            timerElement.innerText = timeLeft;
+
+            const countdownInterval = setInterval(() => {
+                timeLeft--;
+                timerElement.innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    goToPaymentPage();
+                }
+            }, 1000);
+        }
+
+        function goToPaymentPage() {
+            document.getElementById('warning-view').classList.add('hidden');
             document.getElementById('final-amount-value').innerText = currentSelectedPrice;
             document.getElementById('payment-view').classList.remove('hidden');
             window.scrollTo(0,0);
