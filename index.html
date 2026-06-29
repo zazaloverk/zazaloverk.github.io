@@ -8,10 +8,13 @@
         :root {
             --bg-color: #0d0e12;
             --card-bg: #161820;
-            --accent-color: #00ffa3; /* Sleek Neon Green */
+            --accent-color: #00ffa3; 
             --text-color: #ffffff;
             --text-muted: #8a8f98;
             --discord-color: #5865F2;
+            --checkout-blue: #2563eb;
+            --checkout-blue-hover: #1d4ed8;
+            --card-border: #232634;
         }
 
         * {
@@ -34,10 +37,14 @@
             padding: 40px 20px;
         }
 
+        .hidden {
+            display: none !important;
+        }
+
         /* Header / Hero Section */
         header {
             text-align: center;
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         header h1 {
@@ -55,7 +62,6 @@
             font-size: 1.2rem;
         }
 
-        /* Section Styling */
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 30px;
@@ -63,7 +69,7 @@
             padding-left: 15px;
         }
 
-        /* Products Grid */
+        /* Products Main Storefront Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -73,7 +79,7 @@
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid #232634;
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 25px;
             display: flex;
@@ -134,7 +140,6 @@
             font-weight: bold;
         }
 
-        /* Buttons */
         .btn {
             display: block;
             text-align: center;
@@ -145,10 +150,242 @@
             border-radius: 8px;
             text-decoration: none;
             transition: opacity 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
         }
 
         .btn:hover {
             opacity: 0.9;
+        }
+
+        /* Dedicated Checkout Page Layout */
+        .checkout-view {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-btn:hover {
+            color: #ffffff;
+        }
+
+        .checkout-view h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .checkout-price {
+            font-size: 2.2rem;
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .variants-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .variant-option {
+            background-color: #0d0e12;
+            border: 1px solid #232634;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .variant-option:hover {
+            border-color: #3b82f6;
+        }
+
+        .variant-option.selected {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        .variant-name {
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+
+        .variant-price {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        .checkout-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .action-checkout-btn {
+            flex: 2;
+            background-color: var(--checkout-blue);
+            color: white;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .action-checkout-btn:hover {
+            background-color: var(--checkout-blue-hover);
+        }
+
+        .action-cart-btn {
+            flex: 1;
+            background-color: #232634;
+            color: white;
+            font-weight: bold;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #3a3f50;
+            cursor: pointer;
+        }
+
+        /* Form Inputs */
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            background-color: #0d0e12;
+            border: 1px solid #232634;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--checkout-blue);
+        }
+
+        /* Payment Presentation Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 5, 10, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .btc-card {
+            background-color: #161820;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .amount-due-box {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid #2563eb;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0 25px 0;
+        }
+
+        .amount-due-box span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .amount-due-box strong {
+            font-size: 2rem;
+            color: #ffffff;
+        }
+
+        .crypto-container {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .crypto-label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .address-box {
+            background-color: #0d0e12;
+            border: 1px solid #232634;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+            user-select: all;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .close-btc-btn {
+            background-color: #232634;
+            color: #ffffff;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #3a3f50;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .close-btc-btn:hover {
+            background-color: #2d3142;
         }
 
         /* Contact Section */
@@ -157,7 +394,8 @@
             border-radius: 12px;
             padding: 40px;
             text-align: center;
-            border: 1px solid #232634;
+            border: 1px solid var(--card-border);
+            margin-top: 40px;
         }
 
         .contact-section p {
@@ -177,11 +415,6 @@
             padding: 14px 32px;
             border-radius: 8px;
             text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .discord-btn:hover {
-            background-color: #4752C4;
         }
 
         footer {
@@ -196,143 +429,209 @@
 
     <div class="container">
         
-        <!-- Hero Header -->
-        <header>
-            <h1>VGCK</h1>
-            <p>Premium undetected utilities, cheats, and spoofers.</p>
-        </header>
+        <!-- MAIN STOREFRONT VIEW -->
+        <div id="store-view">
+            <header>
+                <h1>VGCK</h1>
+                <p>Premium undetected utilities, cheats, and spoofers.</p>
+            </header>
 
-        <!-- Software Showcase & Pricing -->
-        <main>
-            <h2 class="section-title">Available Products</h2>
+            <main>
+                <h2 class="section-title">Available Products</h2>
+                
+                <div class="grid">
+                    <!-- Product 1 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Valorant</div>
+                            <h3>Valorant Private</h3>
+                            <ul>
+                                <li>Highly Secure & Undetected</li>
+                                <li>Premium features configuration</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$79.99</div>
+                            <button class="btn" onclick="openCheckout('valorant-private')">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Valorant</div>
+                            <h3>Valorant Vip</h3>
+                            <ul>
+                                <li>Exclusive private builds</li>
+                                <li>Enhanced optimization options</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$9.99</div>
+                            <button class="btn" onclick="openCheckout('valorant-vip')">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Vanguard</div>
+                            <h3>Vanguard Emulator</h3>
+                            <ul>
+                                <li>Advanced hypervisor bypass</li>
+                                <li>Regular security updates</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$14.99</div>
+                            <button class="btn" onclick="openCheckout('vanguard-emulator')">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Vanguard</div>
+                            <h3>Vanguard Emulator Private</h3>
+                            <ul>
+                                <li>Custom personalized code builds</li>
+                                <li>Maximum slot protection</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$34.99</div>
+                            <button class="btn" onclick="openCheckout('vanguard-private')">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Spoofer HWID</div>
+                            <h3>Oneclick</h3>
+                            <ul>
+                                <li>Instant hardware ID cleanup</li>
+                                <li>Single-click automated process</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$49.99</div>
+                            <button class="btn" onclick="openCheckout('oneclick')">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="card">
+                        <div>
+                            <div class="tag">Spoofer HWID</div>
+                            <h3>Perm (Spoofer)</h3>
+                            <ul>
+                                <li>Permanent system bypass layer</li>
+                                <li>Deep component virtualization</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="price-label">From</div>
+                            <div class="price">$19.99</div>
+                            <button class="btn" onclick="openCheckout('perm-spoofer')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+        <!-- DYNAMIC CHECKOUT VARIANT PAGE -->
+        <div id="checkout-view" class="checkout-view hidden">
+            <button class="back-btn" onclick="closeCheckout()">← Back to Store</button>
+            <h2 id="checkout-product-title">Product Name</h2>
+            <div class="checkout-price" id="checkout-main-price">$0.00</div>
             
-            <div class="grid">
-                <!-- Product 1 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Valorant</div>
-                        <h3>Valorant Private</h3>
-                        <ul>
-                            <li>Highly Secure & Undetected</li>
-                            <li>Premium features configuration</li>
-                            <li>Full customer support access</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$34.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
+            <div class="variants-title">Variants:</div>
+            <div id="variants-container"></div>
 
-                <!-- Product 2 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Valorant</div>
-                        <h3>Valorant Vip</h3>
-                        <ul>
-                            <li>Exclusive private build slots</li>
-                            <li>Enhanced optimization options</li>
-                            <li>24/7 dedicated support priority</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$9.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Vanguard</div>
-                        <h3>Vanguard Emulator</h3>
-                        <ul>
-                            <li>Advanced hypervisor bypass tool</li>
-                            <li>Seamless background processes</li>
-                            <li>Regular security updates</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$14.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Vanguard</div>
-                        <h3>Vanguard Emulator Private</h3>
-                        <ul>
-                            <li>Custom personalized code builds</li>
-                            <li>Maximum slot limitation protection</li>
-                            <li>Ultimate stealth performance</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$79.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Spoofer HWID</div>
-                        <h3>Oneclick Spoofer</h3>
-                        <ul>
-                            <li>Instant hardware ID cleanup</li>
-                            <li>Single-click automated process</li>
-                            <li>Supports all major configurations</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$49.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="card">
-                    <div>
-                        <div class="tag">Spoofer HWID</div>
-                        <h3>Perm (Spoofer)</h3>
-                        <ul>
-                            <li>Permanent system bypass layer</li>
-                            <li>Deep component level virtualization</li>
-                            <li>Robust, continuous execution</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="price-label">From</div>
-                        <div class="price">$19.99</div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
+            <div class="checkout-actions">
+                <button class="action-checkout-btn" onclick="openVerificationModal()">⚡ Checkout</button>
+                <button class="action-cart-btn">🛒 Add To Cart</button>
             </div>
+        </div>
 
-            <!-- Contact Section -->
+
+        <!-- STEP 1: VERIFICATION MODAL (Discord Check) -->
+        <div id="verification-modal" class="modal-overlay hidden">
+            <div class="btc-card">
+                <h3>Verification Required</h3>
+                <p style="margin-bottom: 20px;">Please provide your Discord username. Our gateway logs this intent to reserve security key authorization channels.</p>
+                
+                <div class="input-group">
+                    <label for="buyer-discord">Your Discord Username</label>
+                    <input type="text" id="buyer-discord" placeholder="e.g., customer#1234">
+                </div>
+
+                <button class="action-checkout-btn" style="width:100%;" id="verify-submit-btn" onclick="processNotificationRoute()">
+                    Request Payment Address
+                </button>
+                <button class="close-btc-btn" onclick="closeVerificationModal()">Cancel</button>
+            </div>
+        </div>
+
+
+        <!-- STEP 2: SECURE CRYPTO ADDRESS DISPLAY MODAL -->
+        <div id="btc-modal" class="modal-overlay hidden">
+            <div class="btc-card">
+                <h3 style="color: var(--accent-color);">Verification Success</h3>
+                <p>Your intent has been validated. Send the exact transaction value specified below to clear checkout:</p>
+                
+                <div class="amount-due-box">
+                    <span>Total Amount Due</span>
+                    <strong id="modal-amount-value">$0.00</strong>
+                </div>
+
+                <div class="crypto-container">
+                    <div class="crypto-label"><span style="color:#f7931a;">🧡</span> Bitcoin Address (BTC):</div>
+                    <div class="address-box">bc1qfa7saajwkg5pluv2k96qn0zzykn97evs6ks4zv</div>
+
+                    <div class="crypto-label"><span style="color:#3463a4;">💙</span> Litecoin Address (LTC):</div>
+                    <div class="address-box">LVXM79rLA3rohgqoBBmfreGn9qk939Hr5R</div>
+                </div>
+                
+                <p style="font-size: 0.85rem; color: #ff5e5e; margin-top: 20px;">
+                    ⚠️ Once complete, DM the transaction receipt hash to your manager <strong>berrymucho</strong> for immediate setup deployment activation.
+                </p>
+                <button class="close-btc-btn" onclick="closeBtcRedirect()">Done & Return to Store</button>
+            </div>
+        </div>
+
+
+        <!-- Contact Footer Info Layer -->
+        <div id="contact-footer-layer">
             <h2 class="section-title">Purchasing & Support</h2>
             <div class="contact-section">
-                <p>Ready to purchase, looking for alternative payment options, or need instant setups?</p>
-                <!-- This links straight to opening a chat or group, but displays your handle prominently -->
+                <p>Need custom configuration models or have payment channel questions?</p>
                 <a href="https://discord.com" target="_blank" class="discord-btn">
                     Add on Discord: berrymucho
                 </a>
             </div>
-
-        </main>
+        </div>
 
         <footer>
-            <p>&copy; 2026 Zazaloverk All rights reserved.</p>
+            <p>&copy; 2026 VGCK. All rights reserved.</p>
         </footer>
 
     </div>
 
-</body>
-</html>
+    <script>
+        // PASTE YOUR PRIVATE DISCORD WEBHOOK URL BETWEEN THE QUOTES BELOW:
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
+
+        let currentSelectedProduct = "";
+        let currentSelectedVariant = "";
+        let currentSelectedPrice = "";
+
+        const productsData = {
+ 
