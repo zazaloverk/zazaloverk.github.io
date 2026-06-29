@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGCK | Sleek Cheats & Software</title>
+    <title>VGCK | Premium Cheats & Software</title>
     <style>
         :root {
             --bg-color: #0d0e12;
@@ -11,6 +11,7 @@
             --accent-color: #00ffa3; /* Sleek Neon Green */
             --text-color: #ffffff;
             --text-muted: #8a8f98;
+            --discord-color: #5865F2;
         }
 
         * {
@@ -28,7 +29,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -54,7 +55,7 @@
             font-size: 1.2rem;
         }
 
-        /* Features/Showcase Section */
+        /* Section Styling */
         .section-title {
             font-size: 1.8rem;
             margin-bottom: 30px;
@@ -62,15 +63,11 @@
             padding-left: 15px;
         }
 
-        .showcase {
-            margin-bottom: 60px;
-        }
-
-        /* Products & Pricing Grid */
+        /* Products Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
             margin-bottom: 60px;
         }
 
@@ -78,7 +75,7 @@
             background-color: var(--card-bg);
             border: 1px solid #232634;
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -90,32 +87,48 @@
             border-color: var(--accent-color);
         }
 
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
         .card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 10px;
+        }
+
+        .card .price-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 15px;
         }
 
         .card .price {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--accent-color);
-            margin: 20px 0;
+            color: #ffffff;
+            margin-bottom: 20px;
         }
 
         .card ul {
             list-style: none;
             color: var(--text-muted);
-            margin-bottom: 30px;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
         }
 
         .card ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
         }
 
         .card ul li::before {
-            content: "✓";
+            content: "•";
             color: var(--accent-color);
             margin-right: 10px;
             font-weight: bold;
@@ -149,18 +162,26 @@
 
         .contact-section p {
             color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .contact-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: bold;
+            margin-bottom: 25px;
             font-size: 1.1rem;
         }
 
-        .contact-link:hover {
-            text-decoration: underline;
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--discord-color);
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .discord-btn:hover {
+            background-color: #4752C4;
         }
 
         footer {
@@ -175,57 +196,140 @@
 
     <div class="container">
         
+        <!-- Hero Header -->
         <header>
             <h1>VGCK</h1>
-            <p>Sleek cheats, tools, and premium software utilities.</p>
+            <p>Premium undetected utilities, cheats, and spoofers.</p>
         </header>
 
+        <!-- Software Showcase & Pricing -->
         <main>
-            <h2 class="section-title">Available Software</h2>
+            <h2 class="section-title">Available Products</h2>
             
             <div class="grid">
+                <!-- Product 1 -->
                 <div class="card">
                     <div>
-                        <h3>VGCK Premium Tool</h3>
-                        <p style="color: var(--text-muted);">Undetected, optimized, and built for flawless performance.</p>
-                        <div class="price">$14.99 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></div>
+                        <div class="tag">Valorant</div>
+                        <h3>Valorant Private</h3>
                         <ul>
-                            <li>Instant Digital Delivery</li>
-                            <li>24/7 Discord Support Access</li>
-                            <li>Frequent Security Updates</li>
-                            <li>Sleek, External UI Overlay</li>
+                            <li>Highly Secure & Undetected</li>
+                            <li>Premium features configuration</li>
+                            <li>Full customer support access</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn">Purchase Access</a>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$34.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
                 </div>
 
+                <!-- Product 2 -->
                 <div class="card">
                     <div>
-                        <h3>VGCK Lite Edition</h3>
-                        <p style="color: var(--text-muted);">Essential features for everyday users looking for an edge.</p>
-                        <div class="price">$29.99 <span style="font-size: 1rem; color: var(--text-muted);">/ lifetime</span></div>
+                        <div class="tag">Valorant</div>
+                        <h3>Valorant Vip</h3>
                         <ul>
-                            <li>Lifetime Key Activation</li>
-                            <li>Core Features Included</li>
-                            <li>Standard Updates</li>
-                            <li>Lightweight Background Process</li>
+                            <li>Exclusive private build slots</li>
+                            <li>Enhanced optimization options</li>
+                            <li>24/7 dedicated support priority</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn">Purchase Access</a>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$9.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card">
+                    <div>
+                        <div class="tag">Vanguard</div>
+                        <h3>Vanguard Emulator</h3>
+                        <ul>
+                            <li>Advanced hypervisor bypass tool</li>
+                            <li>Seamless background processes</li>
+                            <li>Regular security updates</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$14.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="card">
+                    <div>
+                        <div class="tag">Vanguard</div>
+                        <h3>Vanguard Emulator Private</h3>
+                        <ul>
+                            <li>Custom personalized code builds</li>
+                            <li>Maximum slot limitation protection</li>
+                            <li>Ultimate stealth performance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$79.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="card">
+                    <div>
+                        <div class="tag">Spoofer HWID</div>
+                        <h3>Oneclick Spoofer</h3>
+                        <ul>
+                            <li>Instant hardware ID cleanup</li>
+                            <li>Single-click automated process</li>
+                            <li>Supports all major configurations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$49.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="card">
+                    <div>
+                        <div class="tag">Spoofer HWID</div>
+                        <h3>Perm (Spoofer)</h3>
+                        <ul>
+                            <li>Permanent system bypass layer</li>
+                            <li>Deep component level virtualization</li>
+                            <li>Robust, continuous execution</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="price-label">From</div>
+                        <div class="price">$19.99</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
                 </div>
             </div>
 
-            <h2 class="section-title">Get In Touch</h2>
+            <!-- Contact Section -->
+            <h2 class="section-title">Purchasing & Support</h2>
             <div class="contact-section">
-                <p>Have questions before purchasing, need custom software built, or require technical support?</p>
-                <p>Reach out directly via email or find me on my community handles:</p>
-                <a href="mailto:your-email@example.com" class="contact-link">your-email@example.com</a>
+                <p>Ready to purchase, looking for alternative payment options, or need instant setups?</p>
+                <!-- This links straight to opening a chat or group, but displays your handle prominently -->
+                <a href="https://discord.com" target="_blank" class="discord-btn">
+                    Add on Discord: berrymucho
+                </a>
             </div>
 
         </main>
 
         <footer>
-            <p>&copy; 2026 zazaloverk. All rights reserved.</p>
+            <p>&copy; 2026 Zazaloverk All rights reserved.</p>
         </footer>
 
     </div>
