@@ -3,77 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGCK | Premium Utilities & Software</title>
+    <title>VGCK | Premium Utilities & Elite Software</title>
     <style>
         :root {
-            --bg-color: #0d0e12;
-            --card-bg: #161820;
+            --bg-gradient: linear-gradient(135deg, #0a0b10 0%, #12141c 100%);
+            --card-bg: rgba(22, 24, 32, 0.7);
             --accent-color: #00ffa3; 
+            --accent-glow: rgba(0, 255, 163, 0.2);
             --text-color: #ffffff;
-            --text-muted: #8a8f98;
-            --checkout-blue: #2563eb;
-            --card-border: #232634;
-            --warning-red: #ff3838;
+            --text-muted: #94a3b8;
+            --checkout-blue: #3b82f6;
+            --card-border: rgba(255, 255, 255, 0.05);
+            --warning-red: #ff4757;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
+            background: var(--bg-gradient);
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
         .hidden { display: none !important; }
 
-        header { text-align: center; padding: 40px 0; }
+        header { text-align: center; padding: 60px 0; }
         header h1 {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 3.5rem;
+            font-weight: 900;
             background: linear-gradient(45deg, #ffffff, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
         header p { color: var(--text-muted); font-size: 1.2rem; }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 30px;
-            border-left: 4px solid var(--accent-color);
+            border-left: 3px solid var(--accent-color);
             padding-left: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
 
-        .tag { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-color); font-weight: bold; margin-bottom: 5px; }
-        .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .card .price-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 15px; }
-        .card .price { font-size: 2rem; font-weight: bold; color: #ffffff; margin-bottom: 20px; }
+        .tag { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-color); font-weight: bold; margin-bottom: 8px; letter-spacing: 1px; }
+        .card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+        .card .price-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; }
+        .card .price { font-size: 2.2rem; font-weight: bold; color: #ffffff; margin-bottom: 25px; }
 
         .card ul { list-style: none; color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; }
-        .card ul li { margin-bottom: 8px; display: flex; align-items: center; }
-        .card ul li::before { content: "•"; color: var(--accent-color); margin-right: 10px; }
+        .card ul li { margin-bottom: 10px; display: flex; align-items: center; }
+        .card ul li::before { content: "⚡"; color: var(--accent-color); margin-right: 10px; font-size: 0.8rem; }
 
         .btn, .action-submit-btn, .action-cart-btn, .close-btc-btn {
             display: block;
@@ -82,70 +92,73 @@
             text-decoration: none;
             cursor: pointer;
             border: none;
-            transition: transform 0.1s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn {
             background-color: var(--accent-color);
-            color: #000000;
-            padding: 12px 24px;
-            border-radius: 8px;
+            color: #0a0b10;
+            padding: 14px 24px;
+            border-radius: 10px;
             width: 100%;
         }
         .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(0, 255, 163, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.4);
         }
         .btn:active, .action-submit-btn:active, .action-cart-btn:active, .close-btc-btn:active {
-            transform: scale(0.97);
+            transform: translateY(0) scale(0.98);
         }
 
         .selection-view {
             max-width: 600px;
             margin: 40px auto;
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 40px;
         }
 
-        .back-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; margin-bottom: 20px; }
+        .back-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; margin-bottom: 25px; transition: color 0.2s; }
         .back-btn:hover { color: #ffffff; }
-        .selection-view h2 { font-size: 2rem; margin-bottom: 10px; }
-        .display-price { font-size: 2.2rem; color: var(--checkout-blue); font-weight: bold; margin-bottom: 25px; }
+        .selection-view h2 { font-size: 2.2rem; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .display-price { font-size: 2.5rem; color: var(--checkout-blue); font-weight: 800; margin-bottom: 30px; }
         
         .variant-box {
-            background-color: #0d0e12;
-            border: 1px solid #232634;
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 12px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
+            transition: all 0.2s ease;
         }
-        .variant-box.selected { border-color: var(--checkout-blue); box-shadow: 0 0 0 1px var(--checkout-blue); }
+        .variant-box:hover { border-color: rgba(59, 130, 246, 0.5); }
+        .variant-box.selected { border-color: var(--checkout-blue); background: rgba(59, 130, 246, 0.05); }
 
-        .checkout-actions { margin-top: 30px; display: flex; gap: 15px; }
+        .checkout-actions { margin-top: 35px; display: flex; gap: 15px; }
         
         .action-submit-btn {
             flex: 2; background-color: var(--checkout-blue); color: white;
-            padding: 14px; border-radius: 8px; font-size: 1.1rem;
+            padding: 16px; border-radius: 10px; font-size: 1.1rem;
         }
         .action-submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .action-cart-btn { flex: 1; background-color: #232634; color: white; padding: 14px; border-radius: 8px; border: 1px solid #3a3f50; }
-        .action-cart-btn:hover { filter: brightness(1.2); }
+        .action-cart-btn { flex: 1; background-color: rgba(255,255,255,0.05); color: white; padding: 16px; border-radius: 10px; border: 1px solid var(--card-border); }
+        .action-cart-btn:hover { background: rgba(255,255,255,0.1); }
 
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(5, 5, 10, 0.85);
-            backdrop-filter: blur(8px);
+            background-color: rgba(5, 6, 10, 0.9);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -154,74 +167,73 @@
         }
 
         .warning-popup {
-            background-color: #1a1114;
-            border: 2px solid var(--warning-red);
-            border-radius: 16px;
+            background: #161214;
+            border: 1px solid var(--warning-red);
+            border-radius: 20px;
             max-width: 500px;
             width: 100%;
-            padding: 40px 30px;
+            padding: 45px 35px;
             text-align: center;
-            box-shadow: 0 10px 40px rgba(255, 56, 56, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 71, 87, 0.2);
             animation: modal-zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes modal-zoom {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.95); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
         .warning-icon {
             font-size: 3.5rem;
             color: var(--warning-red);
-            margin-bottom: 15px;
-            animation: pulse-icon 0.6s infinite alternate;
-        }
-
-        @keyframes pulse-icon {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            margin-bottom: 20px;
         }
 
         .countdown-timer {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            margin-top: 25px;
+            margin-top: 30px;
             font-weight: bold;
-            background: rgba(255,255,255,0.03);
-            padding: 10px;
-            border-radius: 8px;
+            background: rgba(255,255,255,0.02);
+            padding: 12px;
+            border-radius: 10px;
             display: inline-block;
+            border: 1px solid var(--card-border);
         }
-        .countdown-number { color: var(--warning-red); font-size: 1.4rem; }
+        .countdown-number { color: var(--warning-red); font-size: 1.3rem; }
 
         .payment-view {
-            max-width: 500px;
+            max-width: 520px;
             margin: 40px auto;
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
         }
 
-        .amount-due-box { background: rgba(37, 99, 235, 0.1); border: 1px solid #2563eb; border-radius: 8px; padding: 15px; margin: 20px 0; }
-        .amount-due-box strong { font-size: 2.2rem; color: #ffffff; }
+        .amount-due-box { background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 12px; padding: 20px; margin: 25px 0; }
+        .amount-due-box strong { font-size: 2.5rem; color: #ffffff; font-weight: 800; }
 
-        .address-box { background-color: #0d0e12; border: 1px solid #232634; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-bottom: 15px; color: #ffffff; text-align: left; }
+        .address-box { background-color: rgba(0, 0, 0, 0.4); border: 1px solid var(--card-border); padding: 14px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-bottom: 20px; color: #ffffff; text-align: left; }
         
-        .close-btc-btn { background-color: #232634; color: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #3a3f50; width: 100%; margin-top: 15px; }
-        .close-btc-btn:hover { filter: brightness(1.2); }
+        .close-btc-btn { background-color: rgba(255,255,255,0.05); color: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid var(--card-border); width: 100%; margin-top: 20px; font-size: 1.05rem; }
+        .close-btc-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+        .close-btc-btn:disabled { background: #1a1c23; color: var(--text-muted); border-color: var(--card-border); cursor: not-allowed; transform: none !important; box-shadow: none !important; }
 
-        .contact-section { background-color: var(--card-bg); border-radius: 12px; padding: 40px; text-align: center; border: 1px solid var(--card-border); margin-top: 40px; }
-        .discord-btn { display: inline-flex; background-color: #5865F2; color: #ffffff; font-weight: bold; padding: 14px 32px; border-radius: 8px; text-decoration: none; margin-top: 10px; }
-        footer { text-align: center; margin-top: 80px; color: var(--text-muted); font-size: 0.9rem; }
+        .contact-section { background: var(--card-bg); border-radius: 16px; padding: 40px; text-align: center; border: 1px solid var(--card-border); margin-top: 60px; }
+        .discord-btn { display: inline-flex; background-color: #5865F2; color: #ffffff; font-weight: bold; padding: 14px 32px; border-radius: 10px; text-decoration: none; margin-top: 15px; transition: all 0.2s; }
+        .discord-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(88, 101, 242, 0.4); }
+
+        footer { text-align: center; margin-top: 100px; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <div class="container">
         
-        <!-- MAIN STOREFRONT VIEW -->
+        <!-- PAGE 1: MAIN STOREFRONT VIEW -->
         <div id="store-view">
             <header>
                 <h1>VGCK</h1>
@@ -312,7 +324,7 @@
             <h2 id="product-title">Product Name</h2>
             <div class="display-price" id="main-price-display">$0.00</div>
             
-            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px; text-transform:uppercase;">Select Option:</div>
+            <div style="color:var(--text-muted); font-size:0.85rem; margin-bottom:15px; text-transform:uppercase; letter-spacing:0.5px;">Select Option:</div>
             <div id="options-list-container"></div>
             
             <div class="checkout-actions">
@@ -325,9 +337,9 @@
         <div id="warning-modal" class="modal-overlay hidden">
             <div class="warning-popup">
                 <div class="warning-icon">⚠️</div>
-                <h2 style="color: var(--warning-red); margin-bottom: 10px; font-size: 1.6rem;">ATTENTION</h2>
-                <p style="font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; color: #fff;">Wallet addresses change frequently!</p>
-                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">You must contact manager <span style="color:#ffffff; font-weight:bold;">berrymucho</span> on Discord right before submitting any funds to guarantee valid key delivery setup pipelines.</p>
+                <h2 style="color: var(--warning-red); margin-bottom: 12px; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px;">ATTENTION REQUIRED</h2>
+                <p style="font-size: 1.1rem; font-weight: bold; margin-bottom: 12px; color: #fff;">Wallet addresses rotate frequently!</p>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">You must contact manager <span style="color:#ffffff; font-weight:bold;">berrymucho</span> on Discord right before submitting any funds to guarantee valid configuration key delivery setup pipelines.</p>
                 
                 <div class="countdown-timer">
                     Unlocking invoice interface in <span class="countdown-number" id="seconds-left">5</span>s...
@@ -337,35 +349,41 @@
 
         <!-- PAGE 3: FINAL CRYPTO CHECKOUT BILLING VIEW -->
         <div id="payment-view" class="payment-view hidden">
-            <h3 style="color: var(--accent-color); font-size:1.6rem;">Complete Payment</h3>
-            <p style="color:var(--text-muted); margin-top:5px;">Send the transaction value matching your selected option below:</p>
+            <h3 style="color: var(--accent-color); font-size:1.8rem; font-weight:800;">Complete Payment</h3>
+            <p style="color:var(--text-muted); margin-top:5px; font-size:0.95rem;">Send the precise transaction value matching your option selection:</p>
             
             <div class="amount-due-box">
-                <span style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); display:block;">Amount Due</span>
+                <span style="font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); display:block; letter-spacing:0.5px; margin-bottom:4px;">Amount Due</span>
                 <strong><span id="final-amount-value">$0.00</span></strong>
             </div>
             
             <div style="text-align: left;">
-                <div style="font-size:0.85rem; margin-bottom:4px; color:#f7931a; font-weight:bold;">Bitcoin Address (BTC):</div>
+                <div style="font-size:0.85rem; margin-bottom:6px; color:#f7931a; font-weight:bold; letter-spacing:0.3px;">Bitcoin Address (BTC):</div>
                 <div class="address-box">bc1qfa7saajwkg5pluv2k96qn0zzykn97evs6ks4zv</div>
                 
-                <div style="font-size:0.85rem; margin-bottom:4px; color:#3463a4; font-weight:bold;">Litecoin Address (LTC):</div>
+                <div style="font-size:0.85rem; margin-bottom:6px; color:#3463a4; font-weight:bold; letter-spacing:0.3px;">Litecoin Address (LTC):</div>
                 <div class="address-box">LVXM79rLA3rohgqoBBmfreGn9qk939Hr5R</div>
             </div>
             
-            <p style="font-size:0.85rem; color:#ff5e5e; margin-top:20px; line-height:1.4;">
-                ⚠️ Once paid, click the button below to confirm your checkout. This sends your receipt tracking ticket straight to our team.
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:25px; line-height:1.5;">
+                ⚠️ Once paid, click the button below to register your session validation ticket. This logs your intent locally.
             </p>
             <button class="close-btc-btn" id="confirm-pay-btn" onclick="submitPaymentConfirmationNotification()">I Have Paid, Confirm Checkout</button>
+        </div>
+
+        <div id="contact-footer-layer">
+            <div class="contact-section">
+                <p>Need instant setups or custom assistance?</p>
+                <a href="https://discord.com" target="_blank" class="discord-btn">Add on Discord: berrymucho</a>
+            </div>
         </div>
 
         <footer><p>&copy; 2026 VGCK. All rights reserved.</p></footer>
     </div>
 
     <script>
-        // WEBHOOK URL & DISCORD PERSONAL ID
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
-        const YOUR_DISCORD_USER_ID = "1375995808616546474"; 
+        const SPAM_COOLDOWN_TIME = 60000; // 1-minute tracking lockout limit
 
         let currentSelectedProduct = "";
         let currentSelectedVariant = "";
@@ -380,6 +398,31 @@
             'perm-spoofer': { title: 'Perm (Spoofer)', variants: [{label:'Onetime', price:'$19.99'}, {label:'Lifetime', price:'$49.99'}] }
         };
 
+        function checkSpamStatus() {
+            const lastSubmission = localStorage.getItem('last_checkout_submission');
+            if (lastSubmission) {
+                const timePassed = Date.now() - parseInt(lastSubmission);
+                if (timePassed < SPAM_COOLDOWN_TIME) {
+                    const secondsLeft = Math.ceil((SPAM_COOLDOWN_TIME - timePassed) / 1000);
+                    return secondsLeft;
+                }
+            }
+            return 0;
+        }
+
+        function updateButtonCooldownState() {
+            const btn = document.getElementById('confirm-pay-btn');
+            const cooldownRemaining = checkSpamStatus();
+            if (cooldownRemaining > 0) {
+                btn.disabled = true;
+                btn.innerText = `Spam Lockout Active (${cooldownRemaining}s)`;
+                return true;
+            }
+            btn.disabled = false;
+            btn.innerText = "I Have Paid, Confirm Checkout";
+            return false;
+        }
+
         function showSelectionPage(productId) {
             const data = productsData[productId];
             if(!data) return;
@@ -390,6 +433,7 @@
             document.getElementById('store-view').classList.add('hidden');
             document.getElementById('payment-view').classList.add('hidden');
             document.getElementById('warning-modal').classList.add('hidden');
+            document.getElementById('contact-footer-layer').classList.add('hidden');
             document.getElementById('selection-view').classList.remove('hidden');
 
             document.getElementById('product-title').innerText = data.title;
@@ -408,7 +452,7 @@
                     currentSelectedPrice = v.price;
                     currentSelectedVariant = v.label;
                 };
-                opt.innerHTML = `<strong>${v.label}</strong><span style="color:#2563eb; font-weight:bold;">${v.price}</span>`;
+                opt.innerHTML = `<strong>${v.label}</strong><span style="color:var(--checkout-blue); font-weight:bold;">${v.price}</span>`;
                 container.appendChild(opt);
             });
             window.scrollTo(0,0);
@@ -419,6 +463,7 @@
             document.getElementById('payment-view').classList.add('hidden');
             document.getElementById('warning-modal').classList.add('hidden');
             document.getElementById('store-view').classList.remove('hidden');
+            document.getElementById('contact-footer-layer').classList.remove('hidden');
             window.scrollTo(0,0);
         }
 
@@ -445,31 +490,37 @@
             document.getElementById('selection-view').classList.add('hidden');
             document.getElementById('final-amount-value').innerText = currentSelectedPrice;
             document.getElementById('payment-view').classList.remove('hidden');
+            updateButtonCooldownState();
             window.scrollTo(0,0);
         }
 
         function submitPaymentConfirmationNotification() {
+            if (updateButtonCooldownState()) {
+                alert("Please wait for the current spam protection window to expire before attempting another submission.");
+                return;
+            }
+
             const btn = document.getElementById('confirm-pay-btn');
-            btn.innerText = "Sending tracking ticket...";
+            btn.innerText = "Processing checkout validation...";
             btn.disabled = true;
 
-            // Prepares custom mention formatting string <@ID>
-            const mentionText = YOUR_DISCORD_USER_ID !== "PASTE_YOUR_NUMERICAL_DISCORD_ID_HERE" ? `<@${YOUR_DISCORD_USER_ID}>` : "@here";
-
             const payload = {
-                content: `${mentionText} 🚨 **URGENT SALE ACTION CONFIRMED!**`,
+                content: `🚨 **NEW PRODUCT SALE ACTION VERIFICATION REQUESTED**`,
                 embeds: [{
-                    title: "💰 Customer Claims Payment Has Been Submitted",
-                    color: 16749338, // Bright Orange
+                    title: "💰 Intent Confirmation Log",
+                    color: 16753920, 
                     fields: [
-                        { name: "Software Purchased", value: currentSelectedProduct, inline: true },
-                        { name: "Duration Level", value: currentSelectedVariant, inline: true },
-                        { name: "Total Funds Sent", value: currentSelectedPrice, inline: true }
+                        { name: "Utility Model", value: currentSelectedProduct, inline: true },
+                        { name: "Duration Allocation", value: currentSelectedVariant, inline: true },
+                        { name: "Price Model Value", value: currentSelectedPrice, inline: true }
                     ],
-                    footer: { text: "Verify transaction ledger logs & issue configuration keys tokens manually." },
+                    footer: { text: "Static Web Ledger Verification Protocol Tracking" },
                     timestamp: new Date().toISOString()
                 }]
             };
+
+            // Set local storage tracking immediately to block spamming attempts
+            localStorage.setItem('last_checkout_submission', Date.now().toString());
 
             fetch(DISCORD_WEBHOOK_URL, {
                 method: "POST",
@@ -477,19 +528,23 @@
                 body: JSON.stringify(payload)
             })
             .then(() => {
-                alert("✅ Confirmation Sent! Please allow up to 10 minutes for key generation delivery setup logs to map. Check Discord support.");
+                alert("✅ Checkout verified! Please allow up to 10 minutes for data validation. Message handle 'berrymucho' directly on Discord with your hash receipt.");
                 returnToStore();
             })
             .catch(err => {
                 console.error(err);
-                alert("System pipeline delay. Please message berrymucho directly with your transaction hash link.");
+                alert("Static networking delay. Please provide your direct hash log overview to manager 'berrymucho' via Discord chat.");
                 returnToStore();
-            })
-            .finally(() => {
-                btn.innerText = "I Have Paid, Confirm Checkout";
-                btn.disabled = false;
             });
         }
+
+        // Keep local countdown text active if they navigate back into checkout quickly
+        setInterval(() => {
+            const paymentVisible = !document.getElementById('payment-view').classList.contains('hidden');
+            if (paymentVisible) {
+                updateButtonCooldownState();
+            }
+        }, 1000);
     </script>
 </body>
 </html>
