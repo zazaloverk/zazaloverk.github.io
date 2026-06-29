@@ -31,7 +31,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Smooth anchor sliding transition logic */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -107,21 +107,8 @@
         }
 
         .nav-links { display: flex; gap: 28px; list-style: none; }
-        
-        .nav-links li { 
-            color: var(--text-secondary); 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
-            cursor: pointer;
-            transition: color 0.2s, text-shadow 0.2s;
-        }
-        
-        .nav-links li:hover, .nav-links li.active { 
-            color: var(--accent); 
-            text-shadow: 0 0 10px rgba(0, 255, 163, 0.3); 
-        }
+        .nav-links li { color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
+        .nav-links li:hover, .nav-links li.active { color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 163, 0.3); }
 
         .nav-btn {
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); color: #ffffff;
@@ -166,6 +153,26 @@
         .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 24px; }
         .card-meta .cat { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); font-weight: 800; letter-spacing: 1px; }
         .card-meta h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-top: 2px; color: #ffffff; }
+
+        .card-top ul {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .card-top ul li {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-top ul li::before {
+            content: "⚡";
+            color: var(--blue);
+            font-size: 0.75rem;
+        }
 
         .status-badge {
             display: inline-flex; align-items: center; gap: 6px; background: var(--success-bg);
@@ -273,7 +280,7 @@
 
     <div class="container">
         
-        <!-- Navigation Bar Section (Updated Links to function as navigation paths) -->
+        <!-- Navigation Bar Section -->
         <nav class="navbar">
             <div class="nav-logo" onclick="scrollToElement('store-view')">VGCK</div>
             <ul class="nav-links">
@@ -287,9 +294,8 @@
             </div>
         </nav>
 
-        <!-- PAGE 1: OVERVIEW COMPONENT MAIN DASHBOARD -->
+        <!-- PAGE 1: MAIN STORE FRONT COMPONENT -->
         <div id="store-view">
-            <!-- Anchor target hook for navbar alignment navigation -->
             <div id="product-anchor" class="status-header">
                 <span>Availability</span>
                 <h2>Product status</h2>
@@ -297,6 +303,7 @@
 
             <main>
                 <div class="grid">
+                    <!-- Emulator Category -->
                     <div class="card">
                         <div class="card-top">
                             <div class="card-meta">
@@ -325,6 +332,7 @@
                         </div>
                     </div>
 
+                    <!-- Spoofer Category -->
                     <div class="card">
                         <div class="card-top">
                             <div class="card-meta">
@@ -339,11 +347,17 @@
                         </div>
                     </div>
 
+                    <!-- Misc / Other Cheat Feature Category -->
                     <div class="card">
                         <div class="card-top">
                             <div class="card-meta">
-                                <span class="cat">Other</span>
+                                <span class="cat">Misc</span>
                                 <h3>Perm</h3>
+                                <ul>
+                                    <li>Precision Aimbot Included</li>
+                                    <li>Full ESP & Visuals Suite</li>
+                                    <li>Custom Anti-Aim Engine</li>
+                                </ul>
                             </div>
                             <span class="status-badge">Undetected</span>
                         </div>
@@ -356,8 +370,14 @@
                     <div class="card">
                         <div class="card-top">
                             <div class="card-meta">
-                                <span class="cat">Other</span>
+                                <span class="cat">Misc</span>
                                 <h3>Private</h3>
+                                <ul>
+                                    <li>Precision Aimbot Included</li>
+                                    <li>Full ESP & Visuals Suite</li>
+                                    <li>Custom Anti-Aim Engine</li>
+                                    <li style="color: var(--accent); font-weight: bold;">Maximum Undetected Security Build</li>
+                                </ul>
                             </div>
                             <span class="status-badge">Undetected</span>
                         </div>
@@ -370,8 +390,13 @@
                     <div class="card">
                         <div class="card-top">
                             <div class="card-meta">
-                                <span class="cat">Other</span>
+                                <span class="cat">Misc</span>
                                 <h3>VIP</h3>
+                                <ul>
+                                    <li>Precision Aimbot Included</li>
+                                    <li>Full ESP & Visuals Suite</li>
+                                    <li>Custom Anti-Aim Engine</li>
+                                </ul>
                             </div>
                             <span class="status-badge">Undetected</span>
                         </div>
@@ -447,7 +472,7 @@
     <script>
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
         const COOLDOWN_LIMIT = 60000; 
-        const YOUR_DISCORD_USER_ID = "123456789012345678"; // <--- PASTE YOUR REAL NUMERICAL USER ID HERE TO GET PINGED!
+        const YOUR_DISCORD_USER_ID = "123456789012345678"; 
 
         let currentSelectedProduct = "";
         let currentSelectedVariant = "";
@@ -462,9 +487,7 @@
             'valorant-vip': { title: 'VIP', variants: [{label:'1 Day', price:'$9.99'}, {label:'7 Days', price:'$29.99'}, {label:'30 Days', price:'$59.99'}] }
         };
 
-        // NAVIGATION LOGIC INTERACTION ROUTING FUNCTIONS
         function scrollToElement(id) {
-            // Forces store front to become visible first if they are stuck on selection/checkout page views
             returnToStore(); 
             setTimeout(() => {
                 const element = document.getElementById(id);
@@ -473,7 +496,6 @@
         }
 
         function redirectToSupportChannel() {
-            // Secure direct intent execution wrapper structure
             alert("Redirecting to Support Channel. Add username handle: berrymucho manually on Discord if application doesn't hook automatically.");
             window.open("https://discord.com", "_blank");
         }
