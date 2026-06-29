@@ -40,15 +40,10 @@
             position: relative;
         }
 
-        /* ------------------------------------------------------------- */
-        /* CINEMATIC FLOATING LIGHT ORBS BACKGROUND (PURE CSS)            */
-        /* ------------------------------------------------------------- */
+        /* Floating Neon Ambient Orbs Background */
         .ambient-glow-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
             pointer-events: none;
             overflow: hidden;
@@ -59,60 +54,20 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.15;
+            opacity: 0.12;
             mix-blend-mode: screen;
             animation: floatAround 25s infinite alternate ease-in-out;
         }
 
-        /* Orb 1 - Cyan/Green Light */
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            top: -10%;
-            left: 10%;
-            animation-duration: 20s;
-        }
-
-        /* Orb 2 - Deep Cyber Blue */
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
-            bottom: -10%;
-            right: 5%;
-            animation-duration: 28s;
-            animation-delay: -5s;
-        }
-
-        /* Orb 3 - Soft Ambient Pulse */
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
-            top: 40%;
-            left: 60%;
-            animation-duration: 22s;
-            animation-delay: -12s;
-        }
+        .orb-1 { width: 400px; height: 400px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); top: -10%; left: 10%; animation-duration: 20s; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #3b82f6 0%, transparent 70%); bottom: -10%; right: 5%; animation-duration: 28s; animation-delay: -5s; }
+        .orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, #8b5cf6 0%, transparent 70%); top: 40%; left: 60%; animation-duration: 22s; animation-delay: -12s; }
 
         @keyframes floatAround {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(60px, 40px) scale(1.1); }
             100% { transform: translate(-40px, 80px) scale(0.9); }
         }
-
-        /* Front subtle lighting layer */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.02) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* ------------------------------------------------------------- */
 
         .container {
             max-width: 1100px;
@@ -145,51 +100,22 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .nav-links li {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .nav-links li:hover, .nav-links li.active { color: #ffffff; }
-
-        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links li { color: var(--text-secondary); font-size: 0.85rem; font-weight: 500; }
+        .nav-links li.active { color: #ffffff; }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #ffffff;
+            padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 600; text-decoration: none;
         }
-
         .nav-btn:hover { background: #ffffff; color: var(--bg-dark); }
 
-        /* Status Title Section */
+        /* Status Title */
         .status-header { margin-bottom: 32px; }
-        .status-header span {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-dim);
-            font-weight: 700;
-        }
+        .status-header span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); font-weight: 700; }
         .status-header h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; margin-top: 4px; }
 
-        /* Grid & Glass Cards */
+        /* Store Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -207,7 +133,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
@@ -216,126 +142,48 @@
             transform: translateY(-2px);
         }
 
-        .card-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+        .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+        .card-meta .cat { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); font-weight: 700; letter-spacing: 0.5px; }
+        .card-meta h3 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.3px; margin-top: 2px; color: #ffffff; }
 
-        .card-meta .cat {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .card-meta h3 {
-            font-size: 1.35rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            margin-top: 2px;
-            color: #ffffff;
-        }
-
-        /* Status Badges */
         .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--success-bg);
-            border: 1px solid rgba(0, 255, 163, 0.15);
-            color: var(--accent);
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
+            display: inline-flex; align-items: center; gap: 6px; background: var(--success-bg);
+            border: 1px solid rgba(0, 255, 163, 0.15); color: var(--accent); font-size: 0.65rem;
+            font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
         }
+        .status-badge::before { content: ''; width: 5px; height: 5px; background-color: var(--accent); border-radius: 50%; box-shadow: 0 0 6px var(--accent); }
 
-        .status-badge::before {
-            content: '';
-            width: 5px; height: 5px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 6px var(--accent);
-        }
-
-        .price-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            padding-top: 20px;
-        }
-
+        .price-section { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.02); padding-top: 20px; }
         .price-col .lbl { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; display: block; }
         .price-col .val { font-size: 1.5rem; font-weight: 700; color: #ffffff; }
 
-        /* Interactive Controls */
-        .action-btn, .submit-btn, .back-ui-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-            outline: none;
-            border-radius: 8px;
-            text-decoration: none;
+        /* Action Buttons */
+        .action-btn, .submit-btn, .back-ui-btn, .final-btn {
+            display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.85rem;
+            cursor: pointer; border: none; transition: all 0.2s ease; outline: none; border-radius: 8px; text-decoration: none;
         }
 
-        .action-btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            color: #ffffff;
-            padding: 10px 20px;
-        }
+        .action-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #ffffff; padding: 10px 20px; }
+        .card:hover .action-btn { background: #ffffff; color: var(--bg-dark); box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); }
+        .action-btn:active, .submit-btn:active, .back-ui-btn:active, .final-btn:active { transform: scale(0.97); }
 
-        .card:hover .action-btn {
-            background: #ffffff;
-            color: var(--bg-dark);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-        }
-
-        .action-btn:active, .submit-btn:active, .back-ui-btn:active { transform: scale(0.97); }
-
-        /* Configuration Interface Pane */
+        /* Option Selection Pane View */
         .selection-pane {
-            max-width: 500px;
-            margin: 60px auto;
-            background: rgba(13, 15, 24, 0.75);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 36px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            max-width: 500px; margin: 60px auto; background: rgba(13, 15, 24, 0.75);
+            border: 1px solid var(--border); border-radius: 16px; padding: 36px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
         }
 
         .back-ui-btn { background: none; color: var(--text-dim); margin-bottom: 20px; }
         .back-ui-btn:hover { color: #ffffff; }
-
         .selection-pane h2 { font-size: 1.75rem; font-weight: 700; margin-bottom: 4px; }
         .selection-price-display { font-size: 2.2rem; font-weight: 800; color: #ffffff; margin-bottom: 28px; }
 
         .plan-row {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 18px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
+            background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); border-radius: 10px;
+            padding: 18px; margin-bottom: 12px; display: flex; justify-content: space-between;
+            align-items: center; cursor: pointer; transition: all 0.2s;
         }
-
         .plan-row:hover { border-color: rgba(255, 255, 255, 0.1); }
         .plan-row.selected { border-color: var(--blue); background: rgba(59, 130, 246, 0.03); }
         .plan-row strong { font-weight: 600; font-size: 0.95rem; }
@@ -347,122 +195,41 @@
         .submit-btn.primary:hover { box-shadow: 0 5px 20px var(--blue-glow); filter: brightness(1.1); }
         .submit-btn.secondary { background: rgba(255,255,255,0.02); border: 1px solid var(--border); color: var(--text-secondary); }
 
-        /* Cooldown Security Popups */
+        /* Security Verification Lock Overlay Modal */
         .modal-view {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(3, 4, 7, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 24px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(3, 4, 7, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 24px;
         }
 
-        .warning-popup {
-            background: #0d0a0b;
-            border: 1px solid rgba(255, 71, 87, 0.2);
-            border-radius: 16px;
-            max-width: 440px;
-            width: 100%;
-            padding: 40px;
-            text-align: center;
-        }
-
-        .warning-icon {
-            font-size: 2.2rem;
-            color: var(--danger);
-            margin-bottom: 16px;
-            background: rgba(255, 71, 87, 0.08);
-            width: 60px; height: 60px;
-            line-height: 60px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
+        .warning-popup { background: #0d0a0b; border: 1px solid rgba(255, 71, 87, 0.2); border-radius: 16px; max-width: 440px; width: 100%; padding: 40px; text-align: center; }
+        .warning-icon { font-size: 2.2rem; color: var(--danger); margin-bottom: 16px; background: rgba(255, 71, 87, 0.08); width: 60px; height: 60px; line-height: 60px; border-radius: 50%; display: inline-block; }
         .warning-popup h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 10px; }
         .warning-popup p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 24px; }
+        .countdown-box { font-size: 0.8rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; background: rgba(255,255,255,0.01); padding: 8px 18px; border-radius: 8px; border: 1px solid var(--border); display: inline-block; }
 
-        .countdown-box {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            font-weight: 600;
-            text-transform: uppercase;
-            background: rgba(255,255,255,0.01);
-            padding: 8px 18px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            display: inline-block;
-        }
-
-        /* Invoice Interface View */
+        /* Invoice Screen */
         .invoice-pane {
-            max-width: 460px;
-            margin: 60px auto;
-            background: rgba(13, 15, 24, 0.75);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            text-align: center;
+            max-width: 460px; margin: 60px auto; background: rgba(13, 15, 24, 0.75);
+            border: 1px solid var(--border); border-radius: 16px; padding: 40px;
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); text-align: center;
         }
 
-        .amount-container {
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            margin: 24px 0;
-        }
+        .amount-container { background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 24px 0; }
         .amount-container .lbl { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); display: block; margin-bottom: 2px; }
         .amount-container .amt { font-size: 2.2rem; font-weight: 700; color: #ffffff; }
 
         .address-row { text-align: left; margin-bottom: 20px; }
         .address-row label { font-size: 0.75rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 6px; text-transform: uppercase; }
-        .address-input {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            padding: 14px;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.8rem;
-            color: #ffffff;
-            word-break: break-all;
-            user-select: all;
-        }
+        .address-input { background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); padding: 14px; border-radius: 8px; font-family: monospace; font-size: 0.8rem; color: #ffffff; word-break: break-all; user-select: all; }
 
-        .final-btn {
-            background: #ffffff;
-            color: var(--bg-dark);
-            padding: 14px;
-            width: 100%;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            margin-top: 24px;
-            font-weight: bold;
-        }
-        .final-btn:hover:not(:disabled) {
-            background: var(--accent);
-            box-shadow: 0 5px 15px rgba(0, 255, 163, 0.2);
-        }
-        .final-btn:disabled {
-            background: rgba(255,255,255,0.02);
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-            cursor: not-allowed;
-        }
+        .final-btn { background: #ffffff; color: var(--bg-dark); padding: 14px; width: 100%; border-radius: 10px; font-size: 0.95rem; margin-top: 24px; font-weight: bold; }
+        .final-btn:hover:not(:disabled) { background: var(--accent); box-shadow: 0 5px 15px rgba(0, 255, 163, 0.2); }
+        .final-btn:disabled { background: rgba(255,255,255,0.02); color: var(--text-dim); border: 1px solid var(--border); cursor: not-allowed; }
 
-        /* Footer Banner Area */
-        .footer-banner {
-            border-top: 1px solid rgba(255,255,255,0.02);
-            padding: 40px 0;
-            margin-top: 80px;
-            text-align: center;
-        }
-        .footer-banner p { color: var(--text-secondary); font-size: 0.95rem; }
+        .contact-section { border-top: 1px solid rgba(255,255,255,0.02); padding: 40px 0; margin-top: 80px; text-align: center; }
+        .contact-section p { color: var(--text-secondary); font-size: 0.95rem; }
+        .discord-btn { display: inline-flex; background-color: #5865F2; color: #ffffff; font-weight: bold; padding: 14px 32px; border-radius: 10px; text-decoration: none; margin-top: 15px; }
 
         footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 20px; }
     </style>
@@ -547,3 +314,254 @@
                                 <h3>Perm</h3>
                             </div>
                             <span class="status-badge">Undetected</span>
+                        </div>
+                        <div class="price-section">
+                            <div class="price-col"><span class="lbl">From</span><span class="val">$19.99</span></div>
+                            <button class="action-btn" onclick="showSelectionPage('perm-spoofer')">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-meta">
+                                <span class="cat">Other</span>
+                                <h3>Private</h3>
+                            </div>
+                            <span class="status-badge">Undetected</span>
+                        </div>
+                        <div class="price-section">
+                            <div class="price-col"><span class="lbl">From</span><span class="val">$79.99</span></div>
+                            <button class="action-btn" onclick="showSelectionPage('valorant-private')">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <div class="card-meta">
+                                <span class="cat">Other</span>
+                                <h3>VIP</h3>
+                            </div>
+                            <span class="status-badge">Undetected</span>
+                        </div>
+                        <div class="price-section">
+                            <div class="price-col"><span class="lbl">From</span><span class="val">$9.99</span></div>
+                            <button class="action-btn" onclick="showSelectionPage('valorant-vip')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div id="selection-view" class="selection-pane hidden">
+            <button class="back-ui-btn" onclick="returnToStore()">← Back to Overview</button>
+            <h2 id="product-title">Product Name</h2>
+            <div class="selection-price-display" id="main-price-display">$0.00</div>
+            
+            <div id="options-list-container"></div>
+            
+            <div class="pane-actions">
+                <button class="submit-btn primary" onclick="openWarningModal()">⚡ Checkout</button>
+                <button class="submit-btn secondary" onclick="returnToStore()">Cancel</button>
+            </div>
+        </div>
+
+        <div id="warning-modal" class="modal-view hidden">
+            <div class="warning-popup">
+                <div class="warning-icon">⚠️</div>
+                <h2>Verification Routing</h2>
+                <p>Dynamic wallet keys shift regularly. You must check in with support manager <span style="color:var(--accent); font-weight:600;">berrymucho</span> on Discord right before processing any transaction to map license generation delivery channels correctly.</p>
+                <div class="countdown-box">Unlocking interface in <span id="seconds-left" style="color:var(--danger)">5</span>s</div>
+            </div>
+        </div>
+
+        <div id="payment-view" class="invoice-pane hidden">
+            <h3>Invoice Terminal</h3>
+            
+            <div class="amount-container">
+                <span class="lbl">Total Amount Due</span>
+                <span class="amt" id="final-amount-value">$0.00</span>
+            </div>
+            
+            <div class="address-row">
+                <label>Bitcoin Network Address (BTC)</label>
+                <div class="address-input">bc1qfa7saajwkg5pluv2k96qn0zzykn97evs6ks4zv</div>
+            </div>
+
+            <div class="address-row">
+                <label>Litecoin Network Address (LTC)</label>
+                <div class="address-input">LVXM79rLA3rohgqoBBmfreGn9qk939Hr5R</div>
+            </div>
+            
+            <p style="font-size:0.85rem; color:var(--text-dim); margin:24px 0 12px 0; text-align:left;">
+                ⚠️ Send a screenshot of your transfer signature transaction hash directly to handle <strong>berrymucho</strong> on Discord for instantaneous access deployment.
+            </p>
+            <button class="final-btn" id="confirm-pay-btn" onclick="submitPaymentConfirmationNotification()">I Have Paid, Confirm Checkout</button>
+        </div>
+
+        <div id="contact-footer-layer">
+            <div class="contact-section">
+                <p>Synced from Discord - updates periodically</p>
+                <a href="https://discord.com" target="_blank" class="discord-btn">Join Discord Community</a>
+            </div>
+        </div>
+
+        <footer><p>&copy; 2026 VGCK. All rights reserved.</p></footer>
+    </div>
+
+    <script>
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
+        const COOLDOWN_LIMIT = 60000; 
+
+        let currentSelectedProduct = "";
+        let currentSelectedVariant = "";
+        let currentSelectedPrice = "";
+
+        const productsData = {
+            'vanguard-emulator': { title: 'Emulator', variants: [{label:'1 Day', price:'$14.99'}, {label:'7 Days', price:'$34.99'}, {label:'30 Days', price:'$49.99'}, {label:'Lifetime', price:'$89.99'}] },
+            'vanguard-private': { title: 'Emulator Private', variants: [{label:'3 Day', price:'$34.99'}, {label:'7 Days', price:'$69.99'}, {label:'30 Days', price:'$99.99'}, {label:'Lifetime', price:'$249.99'}] },
+            'oneclick': { title: 'OneClick Spoofer', variants: [{label:'7 Days', price:'$49.99'}, {label:'30 Days', price:'$149.99'}, {label:'90 days', price:'$349.99'}, {label:'Lifetime', price:'$749.99'}] },
+            'perm-spoofer': { title: 'Perm', variants: [{label:'Onetime', price:'$19.99'}, {label:'Lifetime', price:'$49.99'}] },
+            'valorant-private': { title: 'Private', variants: [{label:'7 Days', price:'$79.99'}, {label:'30 Days', price:'$199.99'}, {label:'Lifetime', price:'$549.99'}] },
+            'valorant-vip': { title: 'VIP', variants: [{label:'1 Day', price:'$9.99'}, {label:'7 Days', price:'$29.99'}, {label:'30 Days', price:'$59.99'}] }
+        };
+
+        function getSpamLockoutRemaining() {
+            const timeLog = localStorage.getItem('last_checkout_submission');
+            if (timeLog) {
+                const elapsed = Date.now() - parseInt(timeLog);
+                if (elapsed < COOLDOWN_LIMIT) return Math.ceil((COOLDOWN_LIMIT - elapsed) / 1000);
+            }
+            return 0;
+        }
+
+        function verifyButtonState() {
+            const el = document.getElementById('confirm-pay-btn');
+            const rem = getSpamLockoutRemaining();
+            if (rem > 0) {
+                el.disabled = true;
+                el.style.opacity = "0.5";
+                el.innerText = `Lockout Active (${rem}s)`;
+                return true;
+            }
+            el.disabled = false;
+            el.style.opacity = "1";
+            el.innerText = "I Have Paid, Confirm Checkout";
+            return false;
+        }
+
+        function showSelectionPage(productId) {
+            const data = productsData[productId];
+            if(!data) return;
+            currentSelectedProduct = data.title;
+            currentSelectedVariant = data.variants.label;
+            currentSelectedPrice = data.variants.price;
+
+            document.getElementById('store-view').classList.add('hidden');
+            document.getElementById('payment-view').classList.add('hidden');
+            document.getElementById('warning-modal').classList.add('hidden');
+            document.getElementById('contact-footer-layer').classList.add('hidden');
+            document.getElementById('selection-view').classList.remove('hidden');
+
+            document.getElementById('product-title').innerText = data.title;
+            document.getElementById('main-price-display').innerText = data.variants.price;
+
+            const container = document.getElementById('options-list-container');
+            container.innerHTML = '';
+            
+            data.variants.forEach((v, idx) => {
+                const row = document.createElement('div');
+                row.className = `plan-row ${idx === 0 ? 'selected' : ''}`;
+                row.onclick = function() {
+                    document.querySelectorAll('.plan-row').forEach(e => e.classList.remove('selected'));
+                    row.classList.add('selected');
+                    document.getElementById('main-price-display').innerText = v.price;
+                    currentSelectedPrice = v.price;
+                    currentSelectedVariant = v.label;
+                };
+                row.innerHTML = `<strong>${v.label}</strong><span class="p-val">${v.price}</span>`;
+                container.appendChild(row);
+            });
+            window.scrollTo(0,0);
+        }
+
+        function returnToStore() {
+            document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('payment-view').classList.add('hidden');
+            document.getElementById('warning-modal').classList.add('hidden');
+            document.getElementById('store-view').classList.remove('hidden');
+            document.getElementById('contact-footer-layer').classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function openWarningModal() {
+            document.getElementById('warning-modal').classList.remove('hidden');
+            let time = 5;
+            const textEl = document.getElementById('seconds-left');
+            textEl.innerText = time;
+
+            const clock = setInterval(() => {
+                time--;
+                textEl.innerText = time;
+                if (time <= 0) {
+                    clearInterval(clock);
+                    routeToInvoice();
+                }
+            }, 1000);
+        }
+
+        function routeToInvoice() {
+            document.getElementById('warning-modal').classList.add('hidden');
+            document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('final-amount-value').innerText = currentSelectedPrice;
+            document.getElementById('payment-view').classList.remove('hidden');
+            verifyButtonState();
+            window.scrollTo(0,0);
+        }
+
+        function submitPaymentConfirmationNotification() {
+            if (verifyButtonState()) return;
+
+            const target = document.getElementById('confirm-pay-btn');
+            target.innerText = "Transmitting verification ticket...";
+            target.disabled = true;
+
+            const dataPacket = {
+                content: `🚨 **NEW TRANSACTION INVOICE CONFIRMATION SUBMITTED**`,
+                embeds: [{
+                    title: "System Checkout Interaction Token Logged",
+                    color: 65443, 
+                    fields: [
+                        { name: "Software Package Name", value: currentSelectedProduct, inline: true },
+                        { name: "Plan Option Selection", value: currentSelectedVariant, inline: true },
+                        { name: "Cost Valuation Scale", value: currentSelectedPrice, inline: true }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            localStorage.setItem('last_checkout_submission', Date.now().toString());
+
+            fetch(DISCORD_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(dataPacket)
+            })
+            .then(() => {
+                alert("✅ Checkout request sent. Please provide your transaction details directly to berrymucho on Discord.");
+                returnToStore();
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Receipt verification logging capture complete. Please update handle berrymucho directly.");
+                returnToStore();
+            });
+        }
+
+        setInterval(() => {
+            if (!document.getElementById('payment-view').classList.contains('hidden')) {
+                verifyButtonState();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
