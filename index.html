@@ -429,7 +429,6 @@
 
     <div class="container">
         
-        <!-- MAIN STOREFRONT VIEW -->
         <div id="store-view">
             <header>
                 <h1>VGCK</h1>
@@ -440,7 +439,6 @@
                 <h2 class="section-title">Available Products</h2>
                 
                 <div class="grid">
-                    <!-- Product 1 -->
                     <div class="card">
                         <div>
                             <div class="tag">Valorant</div>
@@ -457,7 +455,6 @@
                         </div>
                     </div>
 
-                    <!-- Product 2 -->
                     <div class="card">
                         <div>
                             <div class="tag">Valorant</div>
@@ -474,7 +471,6 @@
                         </div>
                     </div>
 
-                    <!-- Product 3 -->
                     <div class="card">
                         <div>
                             <div class="tag">Vanguard</div>
@@ -491,7 +487,6 @@
                         </div>
                     </div>
 
-                    <!-- Product 4 -->
                     <div class="card">
                         <div>
                             <div class="tag">Vanguard</div>
@@ -508,7 +503,6 @@
                         </div>
                     </div>
 
-                    <!-- Product 5 -->
                     <div class="card">
                         <div>
                             <div class="tag">Spoofer HWID</div>
@@ -525,7 +519,6 @@
                         </div>
                     </div>
 
-                    <!-- Product 6 -->
                     <div class="card">
                         <div>
                             <div class="tag">Spoofer HWID</div>
@@ -546,7 +539,6 @@
         </div>
 
 
-        <!-- DYNAMIC CHECKOUT VARIANT PAGE -->
         <div id="checkout-view" class="checkout-view hidden">
             <button class="back-btn" onclick="closeCheckout()">← Back to Store</button>
             <h2 id="checkout-product-title">Product Name</h2>
@@ -562,7 +554,6 @@
         </div>
 
 
-        <!-- STEP 1: VERIFICATION MODAL (Discord Check) -->
         <div id="verification-modal" class="modal-overlay hidden">
             <div class="btc-card">
                 <h3>Verification Required</h3>
@@ -581,7 +572,6 @@
         </div>
 
 
-        <!-- STEP 2: SECURE CRYPTO ADDRESS DISPLAY MODAL -->
         <div id="btc-modal" class="modal-overlay hidden">
             <div class="btc-card">
                 <h3 style="color: var(--accent-color);">Verification Success</h3>
@@ -608,7 +598,6 @@
         </div>
 
 
-        <!-- Contact Footer Info Layer -->
         <div id="contact-footer-layer">
             <h2 class="section-title">Purchasing & Support</h2>
             <div class="contact-section">
@@ -626,7 +615,6 @@
     </div>
 
     <script>
-        // PASTE YOUR PRIVATE DISCORD WEBHOOK URL BETWEEN THE QUOTES BELOW:
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
 
         let currentSelectedProduct = "";
@@ -634,4 +622,15 @@
         let currentSelectedPrice = "";
 
         const productsData = {
- 
+            'valorant-private': {
+                title: 'Valorant Private',
+                variants: [
+                    { label: '7 Days', price: '$79.99' },
+                    { label: '30 Days', price: '$199.99' },
+                    { label: 'Lifetime', price: '$549.99' }
+                ]
+            },
+            'valorant-vip': {
+                title: 'Valorant Vip',
+                variants: [
+                    { label: '1 Day', price: '$9.99' },
