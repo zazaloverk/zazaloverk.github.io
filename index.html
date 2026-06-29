@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGCK | Premium Cheats & Software</title>
+    <title>VGCK | Premium Utilities & Software</title>
     <style>
         :root {
             --bg-color: #0d0e12;
@@ -11,9 +11,7 @@
             --accent-color: #00ffa3; 
             --text-color: #ffffff;
             --text-muted: #8a8f98;
-            --discord-color: #5865F2;
             --checkout-blue: #2563eb;
-            --checkout-blue-hover: #1d4ed8;
             --card-border: #232634;
         }
 
@@ -90,9 +88,10 @@
             width: 100%;
         }
 
-        .checkout-view {
+        /* Variant Option Select View */
+        .selection-view {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 40px auto;
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 12px;
@@ -100,9 +99,11 @@
         }
 
         .back-btn { background: none; border: none; color: var(--text-muted); font-size: 1rem; cursor: pointer; margin-bottom: 20px; }
-        .checkout-price { font-size: 2.2rem; color: #2563eb; font-weight: bold; margin-bottom: 25px; }
+        .back-btn:hover { color: #ffffff; }
+        .selection-view h2 { font-size: 2rem; margin-bottom: 10px; }
+        .display-price { font-size: 2.2rem; color: var(--checkout-blue); font-weight: bold; margin-bottom: 25px; }
         
-        .variant-option {
+        .variant-box {
             background-color: #0d0e12;
             border: 1px solid #232634;
             border-radius: 8px;
@@ -113,29 +114,31 @@
             align-items: center;
             cursor: pointer;
         }
-        .variant-option.selected { border-color: #2563eb; }
+        .variant-box.selected { border-color: var(--checkout-blue); box-shadow: 0 0 0 1px var(--checkout-blue); }
 
         .checkout-actions { margin-top: 30px; display: flex; gap: 15px; }
-        .action-checkout-btn {
+        .action-submit-btn {
             flex: 2; background-color: var(--checkout-blue); color: white; font-weight: bold;
-            padding: 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 1.1rem;
+            padding: 14px; border-radius: 8px; border: none; cursor: pointer; font-size: 1.1rem; text-align: center;
         }
-        .action-cart-btn { flex: 1; background-color: #232634; color: white; padding: 14px; border-radius: 8px; border: 1px solid #3a3f50; }
+        .action-cart-btn { flex: 1; background-color: #232634; color: white; padding: 14px; border-radius: 8px; border: 1px solid #3a3f50; cursor: pointer; }
 
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(5, 5, 10, 0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 20px;
+        /* Payment Form Display Page */
+        .payment-view {
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
         }
 
-        .btc-card { background-color: #161820; border: 1px solid var(--card-border); border-radius: 16px; max-width: 480px; width: 100%; padding: 30px; text-align: center; }
-        .amount-due-box { background: rgba(37, 99, 235, 0.1); border: 1px solid #2563eb; border-radius: 8px; padding: 15px; margin: 15px 0; }
-        .amount-due-box strong { font-size: 2rem; color: #ffffff; }
+        .amount-due-box { background: rgba(37, 99, 235, 0.1); border: 1px solid #2563eb; border-radius: 8px; padding: 15px; margin: 20px 0; }
+        .amount-due-box strong { font-size: 2.2rem; color: #ffffff; }
 
         .address-box { background-color: #0d0e12; border: 1px solid #232634; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; word-break: break-all; margin-bottom: 15px; color: #ffffff; text-align: left; }
-        .close-btc-btn { background-color: #232634; color: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #3a3f50; cursor: pointer; width: 100%; margin-top: 15px; }
-
-        .contact-section { background-color: var(--card-bg); border-radius: 12px; padding: 40px; text-align: center; border: 1px solid var(--card-border); margin-top: 40px; }
-        .discord-btn { display: inline-flex; background-color: var(--discord-color); color: #ffffff; font-weight: bold; padding: 14px 32px; border-radius: 8px; text-decoration: none; margin-top: 10px; }
+        
         footer { text-align: center; margin-top: 80px; color: var(--text-muted); font-size: 0.9rem; }
     </style>
 </head>
@@ -156,11 +159,11 @@
                         <div>
                             <div class="tag">Valorant</div>
                             <h3>Valorant Private</h3>
-                            <ul><li>Highly Secure & Undetected</li><li>Premium configuration</li></ul>
+                            <ul><li>Highly Secure & Undetected</li><li>Premium configuration tools</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$79.99</div>
-                            <button class="btn" onclick="openCheckout('valorant-private')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('valorant-private')">View Details</button>
                         </div>
                     </div>
 
@@ -168,11 +171,11 @@
                         <div>
                             <div class="tag">Valorant</div>
                             <h3>Valorant Vip</h3>
-                            <ul><li>Exclusive private builds</li><li>Enhanced optimization</li></ul>
+                            <ul><li>Exclusive private builds</li><li>Enhanced optimization options</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$9.99</div>
-                            <button class="btn" onclick="openCheckout('valorant-vip')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('valorant-vip')">View Details</button>
                         </div>
                     </div>
 
@@ -180,11 +183,11 @@
                         <div>
                             <div class="tag">Vanguard</div>
                             <h3>Vanguard Emulator</h3>
-                            <ul><li>Advanced hypervisor bypass</li><li>Regular updates</li></ul>
+                            <ul><li>Advanced hypervisor bypass</li><li>Regular software updates</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$14.99</div>
-                            <button class="btn" onclick="openCheckout('vanguard-emulator')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('vanguard-emulator')">View Details</button>
                         </div>
                     </div>
 
@@ -192,11 +195,11 @@
                         <div>
                             <div class="tag">Vanguard</div>
                             <h3>Vanguard Emulator Private</h3>
-                            <ul><li>Custom personal builds</li><li>Maximum slot protection</li></ul>
+                            <ul><li>Custom personalized builds</li><li>Maximum slot protection</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$34.99</div>
-                            <button class="btn" onclick="openCheckout('vanguard-private')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('vanguard-private')">View Details</button>
                         </div>
                     </div>
 
@@ -204,11 +207,11 @@
                         <div>
                             <div class="tag">Spoofer HWID</div>
                             <h3>Oneclick</h3>
-                            <ul><li>Instant HWID cleanup</li><li>Single-click process</li></ul>
+                            <ul><li>Instant HWID system cleanup</li><li>Single-click automated file process</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$49.99</div>
-                            <button class="btn" onclick="openCheckout('oneclick')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('oneclick')">View Details</button>
                         </div>
                     </div>
 
@@ -216,51 +219,54 @@
                         <div>
                             <div class="tag">Spoofer HWID</div>
                             <h3>Perm (Spoofer)</h3>
-                            <ul><li>Permanent system bypass layer</li><li>Deep component virtualization</li></ul>
+                            <ul><li>Permanent system bypass layer</li><li>Deep hardware virtualization</li></ul>
                         </div>
                         <div>
                             <div class="price-label">From</div><div class="price">$19.99</div>
-                            <button class="btn" onclick="openCheckout('perm-spoofer')">View Details</button>
+                            <button class="btn" onclick="showSelectionPage('perm-spoofer')">View Details</button>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
 
-        <div id="checkout-view" class="checkout-view hidden">
-            <button class="back-btn" onclick="closeCheckout()">← Back to Store</button>
-            <h2 id="checkout-product-title">Product Name</h2>
-            <div class="checkout-price" id="checkout-main-price">$0.00</div>
-            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">Variants:</div>
-            <div id="variants-container"></div>
+        <div id="selection-view" class="selection-view hidden">
+            <button class="back-btn" onclick="returnToStore()">← Back to Store</button>
+            <h2 id="product-title">Product Name</h2>
+            <div class="display-price" id="main-price-display">$0.00</div>
+            
+            <div style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px; text-transform:uppercase;">Select Option:</div>
+            <div id="options-list-container"></div>
+            
             <div class="checkout-actions">
-                <button class="action-checkout-btn" onclick="processCheckoutRoute()">⚡ Checkout</button>
-                <button class="action-cart-btn">🛒 Add To Cart</button>
+                <button class="action-submit-btn" onclick="goToPaymentPage()">⚡ Checkout</button>
+                <button class="action-cart-btn" onclick="returnToStore()">🛒 Add To Cart</button>
             </div>
         </div>
 
-        <div id="btc-modal" class="modal-overlay hidden">
-            <div class="btc-card">
-                <h3 style="color: var(--accent-color);">Payment Address Secured</h3>
-                <p>Send the exact amount specified below to finalize setup access:</p>
-                <div class="amount-due-box"><strong><span id="modal-amount-value">$0.00</span></strong></div>
-                <div style="text-align: left;">
-                    <div style="font-size:0.85rem; margin-bottom:4px; color:#f7931a;">Bitcoin Address (BTC):</div>
-                    <div class="address-box">bc1qfa7saajwkg5pluv2k96qn0zzykn97evs6ks4zv</div>
-                    <div style="font-size:0.85rem; margin-bottom:4px; color:#3463a4;">Litecoin Address (LTC):</div>
-                    <div class="address-box">LVXM79rLA3rohgqoBBmfreGn9qk939Hr5R</div>
-                </div>
-                <p style="font-size:0.85rem; color:#ff5e5e; margin-top:15px;">⚠️ Once paid, send your receipt screenshot to your manager <strong>berrymucho</strong> on Discord.</p>
-                <button class="close-btc-btn" onclick="closeBtcRedirect()">Return to Store</button>
+        <div id="payment-view" class="payment-view hidden">
+            <h3 style="color: var(--accent-color); font-size:1.6rem;">Complete Payment</h3>
+            <p style="color:var(--text-muted); margin-top:5px;">Send the transaction value matching your selected option below:</p>
+            
+            <div class="amount-due-box">
+                <span style="font-size:0.85rem; text-transform:uppercase; color:var(--text-muted); display:block;">Amount Due</span>
+                <strong><span id="final-amount-value">$0.00</span></strong>
             </div>
+            
+            <div style="text-align: left;">
+                <div style="font-size:0.85rem; margin-bottom:4px; color:#f7931a; font-weight:bold;">Bitcoin Address (BTC):</div>
+                <div class="address-box">bc1qfa7saajwkg5pluv2k96qn0zzykn97evs6ks4zv</div>
+                
+                <div style="font-size:0.85rem; margin-bottom:4px; color:#3463a4; font-weight:bold;">Litecoin Address (LTC):</div>
+                <div class="address-box">LVXM79rLA3rohgqoBBmfreGn9qk939Hr5R</div>
+            </div>
+            
+            <p style="font-size:0.85rem; color:#ff5e5e; margin-top:20px; line-height:1.4;">
+                ⚠️ Once paid, send a screenshot of your transaction hash receipt directly to your manager <strong>berrymucho</strong> on Discord for access configuration setup.
+            </p>
+            <button class="close-btc-btn" onclick="returnToStore()">Done & Return to Store</button>
         </div>
 
-        <div id="contact-footer-layer">
-            <div class="contact-section">
-                <p>Need instant setups or custom assistance?</p>
-                <a href="https://discord.com" target="_blank" class="discord-btn">Add on Discord: berrymucho</a>
-            </div>
-        </div>
         <footer><p>&copy; 2026 VGCK. All rights reserved.</p></footer>
     </div>
 
@@ -276,51 +282,48 @@
             'perm-spoofer': { title: 'Perm (Spoofer)', variants: [{label:'Onetime', price:'$19.99'}, {label:'Lifetime', price:'$49.99'}] }
         };
 
-        function openCheckout(productId) {
+        function showSelectionPage(productId) {
             const data = productsData[productId];
             if(!data) return;
             currentSelectedPrice = data.variants.price;
 
             document.getElementById('store-view').classList.add('hidden');
-            document.getElementById('contact-footer-layer').classList.add('hidden');
-            document.getElementById('checkout-view').classList.remove('hidden');
+            document.getElementById('payment-view').classList.add('hidden');
+            document.getElementById('selection-view').classList.remove('hidden');
 
-            document.getElementById('checkout-product-title').innerText = data.title;
-            document.getElementById('checkout-main-price').innerText = data.variants.price;
+            document.getElementById('product-title').innerText = data.title;
+            document.getElementById('main-price-display').innerText = data.variants.price;
 
-            const container = document.getElementById('variants-container');
+            const container = document.getElementById('options-list-container');
             container.innerHTML = '';
+            
             data.variants.forEach((v, idx) => {
                 const opt = document.createElement('div');
-                opt.className = `variant-option ${idx === 0 ? 'selected' : ''}`;
+                opt.className = `variant-box ${idx === 0 ? 'selected' : ''}`;
                 opt.onclick = function() {
-                    document.querySelectorAll('.variant-option').forEach(el => el.classList.remove('selected'));
+                    document.querySelectorAll('.variant-box').forEach(el => el.classList.remove('selected'));
                     opt.classList.add('selected');
-                    document.getElementById('checkout-main-price').innerText = v.price;
+                    document.getElementById('main-price-display').innerText = v.price;
                     currentSelectedPrice = v.price;
                 };
-                opt.innerHTML = `<strong>${v.label}</strong><span style="color:#2563eb;">${v.price}</span>`;
+                opt.innerHTML = `<strong>${v.label}</strong><span style="color:#2563eb; font-weight:bold;">${v.price}</span>`;
                 container.appendChild(opt);
             });
             window.scrollTo(0,0);
         }
 
-        function closeCheckout() {
-            document.getElementById('checkout-view').classList.add('hidden');
+        function returnToStore() {
+            document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('payment-view').classList.add('hidden');
             document.getElementById('store-view').classList.remove('hidden');
-            document.getElementById('contact-footer-layer').classList.remove('hidden');
+            window.scrollTo(0,0);
         }
 
-        function processCheckoutRoute() {
-            // Safe Native prompt that alerts them to contact you on discord before proceeding
-            alert("⚠️ NOTICE: Wallet addresses can rotate. Please ensure you inform handle 'berrymucho' on Discord right before submitting payment!");
-            document.getElementById('modal-amount-value').innerText = currentSelectedPrice;
-            document.getElementById('btc-modal').classList.remove('hidden');
-        }
-
-        function closeBtcRedirect() {
-            document.getElementById('btc-modal').classList.add('hidden');
-            closeCheckout();
+        function goToPaymentPage() {
+            document.getElementById('selection-view').classList.add('hidden');
+            document.getElementById('final-amount-value').innerText = currentSelectedPrice;
+            document.getElementById('payment-view').classList.remove('hidden');
+            window.scrollTo(0,0);
         }
     </script>
 </body>
