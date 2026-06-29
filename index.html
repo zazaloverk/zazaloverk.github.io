@@ -30,6 +30,10 @@
             user-select: none;
         }
 
+        html {
+            scroll-behavior: smooth; /* Smooth anchor sliding transition logic */
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-dark);
@@ -99,11 +103,25 @@
             background: linear-gradient(135deg, #ffffff 0%, var(--blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            cursor: pointer;
         }
 
         .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links li { color: var(--text-secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
-        .nav-links li.active { color: var(--accent); text-shadow: 0 0 10px rgba(0, 255, 163, 0.3); }
+        
+        .nav-links li { 
+            color: var(--text-secondary); 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            cursor: pointer;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        
+        .nav-links li:hover, .nav-links li.active { 
+            color: var(--accent); 
+            text-shadow: 0 0 10px rgba(0, 255, 163, 0.3); 
+        }
 
         .nav-btn {
             background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); color: #ffffff;
@@ -113,7 +131,7 @@
         .nav-btn:hover { background: #ffffff; color: var(--bg-dark); box-shadow: 0 0 15px rgba(255,255,255,0.2); }
 
         /* Status Banner Header */
-        .status-header { margin-bottom: 40px; }
+        .status-header { margin-bottom: 40px; padding-top: 20px; }
         .status-header span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); font-weight: 800; }
         .status-header h2 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-top: 4px; background: linear-gradient(180deg, #fff 40%, var(--text-secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
@@ -246,6 +264,7 @@
 </head>
 <body>
 
+    <!-- Intense Glowing Ambient Motion Lightsbackdrop -->
     <div class="ambient-glow-container">
         <div class="light-orb orb-1"></div>
         <div class="light-orb orb-2"></div>
@@ -254,21 +273,24 @@
 
     <div class="container">
         
+        <!-- Navigation Bar Section (Updated Links to function as navigation paths) -->
         <nav class="navbar">
-            <div class="nav-logo">VGCK</div>
+            <div class="nav-logo" onclick="scrollToElement('store-view')">VGCK</div>
             <ul class="nav-links">
-                <li class="active">Home</li>
-                <li>Products</li>
-                <li>Status</li>
-                <li>Support</li>
+                <li class="active" onclick="scrollToElement('store-view')">Home</li>
+                <li onclick="scrollToElement('product-anchor')">Products</li>
+                <li onclick="scrollToElement('store-view')">Status</li>
+                <li onclick="redirectToSupportChannel()">Support</li>
             </ul>
             <div class="nav-right">
                 <a href="https://discord.com" target="_blank" class="nav-btn">Discord</a>
             </div>
         </nav>
 
+        <!-- PAGE 1: OVERVIEW COMPONENT MAIN DASHBOARD -->
         <div id="store-view">
-            <div class="status-header">
+            <!-- Anchor target hook for navbar alignment navigation -->
+            <div id="product-anchor" class="status-header">
                 <span>Availability</span>
                 <h2>Product status</h2>
             </div>
@@ -362,6 +384,7 @@
             </main>
         </div>
 
+        <!-- PAGE 2: SELECTION VIEW PANE -->
         <div id="selection-view" class="selection-pane hidden">
             <button class="back-ui-btn" onclick="returnToStore()">← Back to Overview</button>
             <h2 id="product-title">Product Name</h2>
@@ -375,6 +398,7 @@
             </div>
         </div>
 
+        <!-- TIMED VERIFICATION SYSTEM DIALOG WINDOW MODAL -->
         <div id="warning-modal" class="modal-view hidden">
             <div class="warning-popup">
                 <div class="warning-icon">⚠️</div>
@@ -384,6 +408,7 @@
             </div>
         </div>
 
+        <!-- PAGE 3: CRYPTO LEDGER BILLING VIEW PANE -->
         <div id="payment-view" class="invoice-pane hidden">
             <h3>Invoice Terminal</h3>
             
@@ -408,10 +433,11 @@
             <button class="final-btn" id="confirm-pay-btn" onclick="submitPaymentConfirmationNotification()">I Have Paid, Confirm Checkout</button>
         </div>
 
+        <!-- Support Box Footer -->
         <div id="contact-footer-layer">
             <div class="contact-section">
                 <p>Synced from Discord - updates periodically</p>
-                <a href="https://discord.com" target="_blank" class="discord-btn">Join Discord Community</a>
+                <button class="discord-btn" onclick="redirectToSupportChannel()">Join Discord Community</button>
             </div>
         </div>
 
@@ -421,8 +447,6 @@
     <script>
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1521068030174695495/uxp7Gcc5NLBH3sGdgkPhCT4FtAkyxKqwF5lU4l7uAWwxHqP6EXGXKxXTa6HXzrGjUHTg";
         const COOLDOWN_LIMIT = 60000; 
-
-        // FIXED USER ID CONFIGURATION MAPPING MENTION
         const YOUR_DISCORD_USER_ID = "123456789012345678"; // <--- PASTE YOUR REAL NUMERICAL USER ID HERE TO GET PINGED!
 
         let currentSelectedProduct = "";
@@ -437,6 +461,22 @@
             'valorant-private': { title: 'Private', variants: [{label:'7 Days', price:'$79.99'}, {label:'30 Days', price:'$199.99'}, {label:'Lifetime', price:'$549.99'}] },
             'valorant-vip': { title: 'VIP', variants: [{label:'1 Day', price:'$9.99'}, {label:'7 Days', price:'$29.99'}, {label:'30 Days', price:'$59.99'}] }
         };
+
+        // NAVIGATION LOGIC INTERACTION ROUTING FUNCTIONS
+        function scrollToElement(id) {
+            // Forces store front to become visible first if they are stuck on selection/checkout page views
+            returnToStore(); 
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        }
+
+        function redirectToSupportChannel() {
+            // Secure direct intent execution wrapper structure
+            alert("Redirecting to Support Channel. Add username handle: berrymucho manually on Discord if application doesn't hook automatically.");
+            window.open("https://discord.com", "_blank");
+        }
 
         function getSpamLockoutRemaining() {
             const timeLog = localStorage.getItem('last_checkout_submission');
@@ -464,8 +504,8 @@
             const data = productsData[productId];
             if(!data) return;
             currentSelectedProduct = data.title;
-            currentSelectedVariant = data.variants.label;
-            currentSelectedPrice = data.variants.price;
+            currentSelectedVariant = data.variants[0].label;
+            currentSelectedPrice = data.variants[0].price;
 
             document.getElementById('store-view').classList.add('hidden');
             document.getElementById('payment-view').classList.add('hidden');
@@ -474,7 +514,7 @@
             document.getElementById('selection-view').classList.remove('hidden');
 
             document.getElementById('product-title').innerText = data.title;
-            document.getElementById('main-price-display').innerText = data.variants.price;
+            document.getElementById('main-price-display').innerText = data.variants[0].price;
 
             const container = document.getElementById('options-list-container');
             container.innerHTML = '';
@@ -501,7 +541,6 @@
             document.getElementById('warning-modal').classList.add('hidden');
             document.getElementById('store-view').classList.remove('hidden');
             document.getElementById('contact-footer-layer').classList.remove('hidden');
-            window.scrollTo(0,0);
         }
 
         function openWarningModal() {
@@ -536,7 +575,6 @@
             target.innerText = "Transmitting registration verification ticket...";
             target.disabled = true;
 
-            // CORRECT DISCORD ID MENTION STRING PARSING FORMAT
             const mentionSyntax = (YOUR_DISCORD_USER_ID && YOUR_DISCORD_USER_ID !== "123456789012345678") ? `<@${YOUR_DISCORD_USER_ID}>` : "@here";
 
             const dataPacket = {
